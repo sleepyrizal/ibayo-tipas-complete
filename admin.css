@@ -1,0 +1,46 @@
+/* ==========================================================
+   Barangay Ibayo-Tipas Admin Portal — custom styles
+   (Most styling is done with Tailwind classes in admin.html.
+    Only things Tailwind can't do easily live here.)
+   ========================================================== */
+
+/* ---------- Fonts ---------- */
+body {
+  font-family: 'Public Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-heading {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+/* ---------- Printing the certificate ----------
+   When printing, hide everything on the page,
+   then show only the certificate modal, full-screen. */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #printable-certificate-modal,
+  #printable-certificate-modal * {
+    visibility: visible !important;
+  }
+
+  #printable-certificate-modal {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    z-index: 999999 !important;
+  }
+
+  /* Buttons like "Print" and "Close" must not appear on paper */
+  .no-print {
+    display: none !important;
+  }
+}
