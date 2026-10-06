@@ -536,19 +536,32 @@
         </section>
 
         <!-- Claiming Guidelines -->
-        <section class="max-w-3xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <section class="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+
+          <!-- Left Card: Requirements -->
           <div class="p-5 rounded-2xl bg-card border border-border space-y-2">
-            <div class="flex items-center gap-2 font-bold text-foreground font-heading text-sm">
-              <i data-lucide="id-card" class="w-4 h-4 text-primary"></i>
+            <div class="font-bold text-foreground font-heading text-sm">
               <span>Ano ang Dapat Dalhin sa Pag-claim?</span>
             </div>
-            <ul class="space-y-1.5 text-muted-foreground pl-1">
-              <li>• <strong class="text-foreground">Orihinal na Valid ID</strong> na may address sa Barangay
-                Ibayo-Tipas, Taguig (para sa 100% LIBRENG proseso)</li>
-              <li>• Katibayan ng Paninirahan (Cedula o Billing)</li>
-              <li>• Ang inyong opisyal na Claim Reference Code</li>
+            <ul class="space-y-2 text-muted-foreground text-xs pt-1">
+              <li class="flex items-start gap-2">
+                <i data-lucide="id-card" class="w-4 h-4 text-primary shrink-0 mt-0.5"></i>
+                <span class="flex-1">
+                  <strong class="text-foreground">Orihinal na Valid ID</strong> na may address sa Barangay Ibayo-Tipas,
+                  Taguig (para sa 100% LIBRENG proseso)
+                </span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-primary shrink-0 mt-0.5"></i>
+                <span class="flex-1">Katibayan ng Paninirahan (Cedula o Billing)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="ticket" class="w-4 h-4 text-primary shrink-0 mt-0.5"></i>
+                <span class="flex-1">Ang inyong opisyal na Claim Reference Code</span>
+              </li>
             </ul>
           </div>
+
           <!-- Right Card: Location & Schedule -->
           <div class="p-5 rounded-2xl bg-card border border-border space-y-2">
             <div class="font-bold text-foreground font-heading text-sm">
@@ -571,6 +584,7 @@
               </div>
             </div>
           </div>
+
         </section>
 
       </main>
