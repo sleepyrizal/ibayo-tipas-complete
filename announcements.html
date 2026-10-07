@@ -3,44 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>e-Reklamo & Sumbong Desk | Barangay Ibayo-Tipas, Taguig City</title>
-  
-  <!-- Favicon -->
+  <title>Announcements — Barangay Ibayo-Tipas, Taguig City</title>
+
+  <meta name="description" content="Mga balita at anunsyo mula sa Barangay Ibayo-Tipas, Taguig City.">
+  <meta property="og:title" content="Announcements — Barangay Ibayo-Tipas, Taguig City">
+  <meta property="og:description" content="Mga balita at anunsyo mula sa Barangay Ibayo-Tipas, Taguig City.">
+  <meta property="og:type" content="website">
+
   <link rel="icon" type="image/png" href="assets/logo.png">
 
-  <!-- Tailwind CSS via CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            leaf: {
-              DEFAULT: '#143d2c',
-              dark: '#0c281d',
-              light: '#1e533c'
-            },
-            primary: {
-              DEFAULT: '#1f6a4e',
-              foreground: '#f8faf8',
-              hover: '#17543d'
-            },
-            sun: {
-              DEFAULT: '#f59e0b',
-              foreground: '#3b1d03',
-              hover: '#d97706'
-            },
+            leaf: { DEFAULT: '#143d2c', dark: '#0c281d', light: '#1e533c' },
+            primary: { DEFAULT: '#1f6a4e', foreground: '#f8faf8', hover: '#17543d' },
+            sun: { DEFAULT: '#f59e0b', foreground: '#3b1d03', hover: '#d97706' },
             background: '#f7faf8',
             foreground: '#1c2822',
             card: '#ffffff',
-            secondary: {
-              DEFAULT: '#e8f1eb',
-              foreground: '#1c4b37'
-            },
-            muted: {
-              DEFAULT: '#edf3ef',
-              foreground: '#526b5e'
-            },
+            secondary: { DEFAULT: '#e8f1eb', foreground: '#1c4b37' },
+            muted: { DEFAULT: '#edf3ef', foreground: '#526b5e' },
             border: '#dce3de'
           },
           fontFamily: {
@@ -52,10 +41,7 @@
     }
   </script>
 
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="min-h-full flex flex-col antialiased text-foreground bg-background">
@@ -65,11 +51,11 @@
     <div class="mx-auto flex max-w-7xl items-center justify-between">
       <div class="flex items-center gap-3">
         <span class="inline-flex items-center gap-1.5 font-bold text-sun">
-          <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
-          <span>BPSO Emergency Patrol:</span>
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+          <span>Oras ng Tanggapan:</span>
         </span>
-        <span class="hidden sm:inline">24 Oras Naka-standby sa mga Purok</span>
-        <span class="sm:hidden">24/7 BPSO Patrol</span>
+        <span class="hidden sm:inline">Lunes – Biyernes, 7:00 AM – 4:00 PM</span>
+        <span class="sm:hidden">7:00 AM – 4:00 PM</span>
       </div>
       <div class="flex items-center gap-4 text-[11px] sm:text-xs">
         <a href="tel:09627438455" class="hover:text-sun transition-colors flex items-center gap-1 font-bold text-red-300">
@@ -87,66 +73,49 @@
   <!-- ================= MAIN HEADER / NAVBAR ================= -->
   <header class="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-3 sm:px-6 py-3">
-      
-      <!-- Mobile Sidebar Toggle & Branding -->
       <div class="flex items-center gap-2.5">
         <button id="mobile-sidebar-toggle" class="md:hidden p-2 rounded-xl border border-border text-foreground hover:bg-secondary transition-colors" aria-label="Buksan ang Menu">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
-
         <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
           <img src="assets/logo.png" alt="Barangay Ibayo-Tipas Official Seal" class="size-10 sm:size-11 rounded-full object-contain shadow-sm border border-border group-hover:scale-105 transition-transform bg-white p-0.5">
           <span class="leading-tight">
-            <span class="block font-bold text-foreground font-heading text-base sm:text-lg group-hover:text-primary transition-colors tracking-tight">
-              Barangay Ibayo-Tipas
-            </span>
-            <span class="block text-[11px] sm:text-xs text-muted-foreground font-medium">
-              Taguig City · Tuloy ang Serbisyo!
-            </span>
+            <span class="block font-bold text-foreground font-heading text-base sm:text-lg group-hover:text-primary transition-colors tracking-tight">Barangay Ibayo-Tipas</span>
+            <span class="block text-[11px] sm:text-xs text-muted-foreground font-medium">Taguig City · Tuloy ang Serbisyo!</span>
           </span>
         </a>
       </div>
-
-      <!-- Header Actions: Online Request Only -->
       <div class="flex items-center gap-2 sm:gap-3">
         <button class="open-request-modal rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-4 py-2 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
           <i data-lucide="file-plus" class="w-3.5 h-3.5 shrink-0"></i>
           <span>Online Request</span>
         </button>
       </div>
-
     </div>
   </header>
 
   <!-- ================= MOBILE NAVIGATION CHIP BAR ================= -->
   <div class="md:hidden overflow-x-auto py-2 px-3 bg-secondary/50 border-b border-border flex items-center gap-2 text-xs font-semibold whitespace-nowrap">
-    <a href="index.html#home" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
-      <i data-lucide="home" class="w-3.5 h-3.5 text-primary"></i>
-      <span>Home</span>
+    <a href="index.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="home" class="w-3.5 h-3.5 text-primary"></i><span>Home</span>
     </a>
     <a href="services.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
-      <i data-lucide="file-check-2" class="w-3.5 h-3.5 text-primary"></i>
-      <span>Services</span>
+      <i data-lucide="file-check-2" class="w-3.5 h-3.5 text-primary"></i><span>Services</span>
     </a>
     <a href="tracker.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1 font-bold text-primary">
-      <i data-lucide="search" class="w-3.5 h-3.5 text-primary"></i>
-      <span>Tracker</span>
+      <i data-lucide="search" class="w-3.5 h-3.5 text-primary"></i><span>Tracker</span>
     </a>
-    <a href="announcements.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
-      <i data-lucide="megaphone" class="w-3.5 h-3.5 text-primary"></i>
-      <span>Announcements</span>
+    <a href="announcements.html" class="px-3 py-1.5 rounded-full bg-primary text-primary-foreground shadow-xs flex items-center gap-1" aria-current="page">
+      <i data-lucide="megaphone" class="w-3.5 h-3.5"></i><span>Announcements</span>
     </a>
     <a href="index.html#about" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
-      <i data-lucide="landmark" class="w-3.5 h-3.5 text-primary"></i>
-      <span>About</span>
+      <i data-lucide="landmark" class="w-3.5 h-3.5 text-primary"></i><span>About</span>
     </a>
-    <a href="health-center.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
-      <i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-primary"></i>
-      <span>Health</span>
+    <a href="index.html#health" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-primary"></i><span>Health</span>
     </a>
-    <a href="reklamo.html" class="px-3 py-1.5 rounded-full bg-primary text-primary-foreground shadow-xs flex items-center gap-1 font-bold">
-      <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
-      <span>e-Reklamo</span>
+    <a href="reklamo.html" class="px-3 py-1.5 rounded-full bg-white text-amber-700 border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-600"></i><span>e-Reklamo</span>
     </a>
   </div>
 
@@ -165,19 +134,15 @@
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
     </div>
-
     <nav class="mt-4 space-y-1 overflow-y-auto flex-1 text-xs font-semibold">
-      <a href="index.html#home" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-        <i data-lucide="home" class="w-4 h-4 text-primary"></i>
-        <span>Home</span>
+      <a href="index.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+        <i data-lucide="home" class="w-4 h-4 text-primary"></i><span>Home</span>
       </a>
-      <a href="announcements.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-        <i data-lucide="megaphone" class="w-4 h-4 text-primary"></i>
-        <span>Announcements</span>
+      <a href="announcements.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold" aria-current="page">
+        <i data-lucide="megaphone" class="w-4 h-4"></i><span>Announcements</span>
       </a>
       <a href="index.html#about" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-        <i data-lucide="landmark" class="w-4 h-4 text-primary"></i>
-        <span>About</span>
+        <i data-lucide="landmark" class="w-4 h-4 text-primary"></i><span>About</span>
       </a>
       <a href="services.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground bg-primary/5">
         <i data-lucide="file-check-2" class="w-4 h-4 text-primary"></i>
@@ -189,46 +154,36 @@
         <span class="flex-1">Live Status Tracker</span>
         <span class="text-[10px] bg-sun text-sun-foreground px-2 py-0.5 rounded-full font-bold">Live</span>
       </a>
-      <a href="health-center.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-        <i data-lucide="heart-pulse" class="w-4 h-4 text-primary"></i>
-        <span>Health Center</span>
+      <a href="index.html#health" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+        <i data-lucide="heart-pulse" class="w-4 h-4 text-primary"></i><span>Health Center</span>
       </a>
-      <a href="reklamo.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold">
-        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-        <span class="flex-1">e-Reklamo Desk</span>
-        <span class="text-[10px] bg-white text-primary px-2 py-0.5 rounded-full font-bold">Active</span>
+      <a href="reklamo.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i><span>e-Reklamo Desk</span>
       </a>
       <a href="index.html#contact" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-        <i data-lucide="phone-call" class="w-4 h-4 text-primary"></i>
-        <span>Contact & Hotlines</span>
+        <i data-lucide="phone-call" class="w-4 h-4 text-primary"></i><span>Contact & Hotlines</span>
       </a>
     </nav>
-
     <div class="pt-3 border-t border-border space-y-2">
       <a href="admin.html" class="w-full text-center py-2.5 rounded-full bg-secondary text-secondary-foreground font-bold text-xs flex items-center justify-center gap-1.5">
-        <i data-lucide="shield-check" class="w-4 h-4 text-primary"></i>
-        <span>Admin Portal Login</span>
+        <i data-lucide="shield-check" class="w-4 h-4 text-primary"></i><span>Admin Portal Login</span>
       </a>
     </div>
   </aside>
 
   <!-- ================= BODY CONTENT WRAPPER WITH LEFT SIDEBAR ================= -->
   <div class="mx-auto flex w-full max-w-7xl flex-1">
-    
-    <!-- DESKTOP LEFT SIDEBAR -->
+
+    <!-- ================= DESKTOP LEFT SIDEBAR ================= -->
     <aside id="desktop-sidebar" class="hidden md:flex flex-col w-64 lg:w-72 shrink-0 border-r border-border bg-card sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto p-4 z-20">
-      
-      <!-- Sidebar Header -->
       <div class="px-3 pb-3 mb-2 border-b border-border">
         <div class="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Pangunahing Menu</div>
         <div class="text-xs font-bold text-foreground mt-0.5">Gabay at Serbisyo sa Mamamayan</div>
       </div>
 
-      <!-- Navigation Hyperlinks -->
       <nav class="space-y-1.5 flex-1">
-        
         <!-- Home -->
-        <a href="index.html#home" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="index.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="home" class="w-4 h-4"></i>
           </div>
@@ -238,14 +193,14 @@
           </div>
         </a>
 
-        <!-- Announcements -->
-        <a href="announcements.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
-          <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
+        <!-- Announcements (ACTIVE) -->
+        <a href="announcements.html" aria-current="page" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-primary text-primary-foreground shadow-sm transition-colors group">
+          <div class="size-8 rounded-lg bg-white/20 text-white flex items-center justify-center transition-colors">
             <i data-lucide="megaphone" class="w-4 h-4"></i>
           </div>
           <div>
-            <span class="block font-bold">Announcements</span>
-            <span class="block text-[10px] text-muted-foreground">Mga Balita at Anunsyo</span>
+            <span class="block">Announcements</span>
+            <span class="block text-[10px] text-primary-foreground/80">Mga Balita at Anunsyo</span>
           </div>
         </a>
 
@@ -260,7 +215,7 @@
           </div>
         </a>
 
-        <!-- Barangay Services -->
+        <!-- Services -->
         <a href="services.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="file-check-2" class="w-4 h-4"></i>
@@ -274,7 +229,7 @@
           </div>
         </a>
 
-        <!-- Live Verification & Status -->
+        <!-- Tracker -->
         <a href="tracker.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="search-check" class="w-4 h-4"></i>
@@ -288,8 +243,8 @@
           </div>
         </a>
 
-        <!-- Health Center -->
-        <a href="health-center.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <!-- Health -->
+        <a href="index.html#health" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="heart-pulse" class="w-4 h-4"></i>
           </div>
@@ -299,21 +254,18 @@
           </div>
         </a>
 
-        <!-- e-Reklamo Desk (Active) -->
-        <a href="reklamo.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-primary text-primary-foreground shadow-sm transition-colors group">
-          <div class="size-8 rounded-lg bg-white/20 text-white flex items-center justify-center transition-colors">
+        <!-- e-Reklamo -->
+        <a href="reklamo.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+          <div class="size-8 rounded-lg bg-secondary text-amber-700 group-hover:bg-amber-600 group-hover:text-white flex items-center justify-center transition-colors">
             <i data-lucide="alert-triangle" class="w-4 h-4"></i>
           </div>
           <div class="flex-1">
-            <div class="flex items-center justify-between">
-              <span class="block">e-Reklamo Desk</span>
-              <span class="text-[9px] bg-white text-primary px-1.5 py-0.5 rounded font-bold">Active</span>
-            </div>
-            <span class="block text-[10px] text-primary-foreground/80">Sumbong at Suhestiyon</span>
+            <span class="block font-bold">e-Reklamo Desk</span>
+            <span class="block text-[10px] text-muted-foreground">Sumbong at Suhestiyon</span>
           </div>
         </a>
 
-        <!-- Contact & Hotlines -->
+        <!-- Contact -->
         <a href="index.html#contact" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="phone-call" class="w-4 h-4"></i>
@@ -323,187 +275,136 @@
             <span class="block text-[10px] text-muted-foreground">Emergency at Opisina</span>
           </div>
         </a>
-
       </nav>
 
-      <!-- Sidebar Footer / Hotlines Widget -->
       <div class="pt-3 mt-3 border-t border-border space-y-2">
         <div class="p-3 rounded-xl bg-secondary/60 border border-border">
           <div class="flex items-center gap-2 text-[11px] font-bold text-red-600">
-            <i data-lucide="ambulance" class="w-3.5 h-3.5"></i>
-            <span>Medic 24/7 Hotline</span>
+            <i data-lucide="ambulance" class="w-3.5 h-3.5"></i><span>Medic 24/7 Hotline</span>
           </div>
-          <a href="tel:09627438455" class="block font-bold text-xs text-foreground mt-1 hover:text-primary">
-            0962 743 8455
-          </a>
+          <a href="tel:09627438455" class="block font-bold text-xs text-foreground mt-1 hover:text-primary">0962 743 8455</a>
         </div>
-
         <a href="admin.html" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-border bg-white text-xs font-bold text-foreground hover:text-primary hover:bg-secondary transition-colors shadow-xs">
-          <i data-lucide="shield-check" class="w-4 h-4 text-primary"></i>
-          <span>Admin Portal Login</span>
+          <i data-lucide="shield-check" class="w-4 h-4 text-primary"></i><span>Admin Portal Login</span>
         </a>
       </div>
-
     </aside>
 
-    <!-- ================= MAIN CONTENT AREA ================= -->
+    <!-- ================= MAIN RIGHT CONTENT COLUMN ================= -->
     <div class="flex-1 min-w-0 flex flex-col">
-      <main class="flex-1 p-4 sm:p-8 lg:p-10 space-y-8">
-        
-        <!-- Page Header Banner -->
-        <div class="rounded-3xl bg-leaf text-primary-foreground p-6 sm:p-10 relative overflow-hidden shadow-lg">
-          <img src="assets/hero-bg.png" alt="Background" class="absolute inset-0 h-full w-full object-cover opacity-15 filter blur-xs">
-          <div class="relative z-10 max-w-2xl space-y-3">
-            <div class="inline-flex items-center gap-2 rounded-full bg-sun px-3.5 py-1 text-xs font-bold text-sun-foreground">
-              <i data-lucide="message-square-warning" class="w-3.5 h-3.5"></i>
-              <span>Sumbong at Suhestiyon</span>
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-black font-heading tracking-tight">
-              e-Reklamo Desk Online
-            </h1>
-            <p class="text-sm sm:text-base text-primary-foreground/90 leading-relaxed">
-              Iparating sa Tanggapan ng Barangay Ibayo-Tipas at BPSO ang anumang alalahanin sa kapayapaan, sirang streetlight, baradong kanal, o mga pampublikong usapin sa inyong purok.
+      <main class="flex-1">
+
+        <!-- ================= PAGE HEADER ================= -->
+        <section class="relative overflow-hidden bg-leaf">
+          <div class="absolute inset-0 bg-gradient-to-r from-leaf-dark/95 via-leaf/85 to-leaf-light/70"></div>
+          <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-sun/10 pointer-events-none filter blur-3xl"></div>
+          <div class="relative px-4 sm:px-8 py-10 sm:py-12">
+            <nav class="text-xs text-primary-foreground/70 flex items-center gap-1.5" aria-label="Breadcrumb">
+              <a href="index.html" class="hover:text-sun">Home</a>
+              <i data-lucide="chevron-right" class="w-3 h-3"></i>
+              <span class="text-primary-foreground font-semibold">Announcements</span>
+            </nav>
+            <p class="mt-4 inline-flex items-center gap-2 rounded-full bg-sun px-3.5 py-1 text-xs font-semibold text-sun-foreground shadow-sm">
+              <i data-lucide="megaphone" class="size-3.5"></i><span>Mga Anunsyo</span>
+            </p>
+            <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold font-heading text-primary-foreground">Latest Announcements</h1>
+            <p class="mt-2 max-w-xl text-sm text-primary-foreground/85">
+              Mga balita, paalala, at programa mula sa Barangay Ibayo-Tipas.
             </p>
           </div>
-        </div>
-
-        <!-- 1. Malaking Submission Form sa Itaas -->
-        <div class="rounded-3xl border border-border bg-card p-6 sm:p-10 shadow-sm">
-          <div class="mb-6 pb-4 border-b border-border">
-            <h3 class="text-xl sm:text-2xl font-bold font-heading text-foreground">Magsumite ng Opisyal na Ulat</h3>
-            <p class="text-xs sm:text-sm text-muted-foreground mt-1">Pakisagutan ang form sa ibaba nang buong katotohanan.</p>
-          </div>
-
-          <form id="complaint-form" class="space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label class="block text-xs font-bold text-foreground mb-1.5">Buong Pangalan (Opsyonal)</label>
-                <input type="text" placeholder="Hal. Juan Dela Cruz (O iwanang blangko)" class="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:bg-white focus:ring-2 focus:ring-primary focus:outline-none transition-all">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-foreground mb-1.5">Contact Number (Para sa updates) *</label>
-                <input type="tel" required placeholder="09XXXXXXXXX" class="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:bg-white focus:ring-2 focus:ring-primary focus:outline-none transition-all">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label class="block text-xs font-bold text-foreground mb-1.5">Uri ng Sumbong / Paksa *</label>
-                <select required class="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:bg-white focus:ring-2 focus:ring-primary focus:outline-none font-semibold">
-                  <option value="peace">Peace &amp; Order / Ingay sa Gabi</option>
-                  <option value="sanitation">Basura / Baradong Kanal</option>
-                  <option value="streetlight">Pundidong Streetlight / Ilaw</option>
-                  <option value="animals">Stray Animals / Alagang Hayop</option>
-                  <option value="traffic">Traffic / Obstruction sa Daan</option>
-                  <option value="suggestion">Suhestiyon o Komento sa Pamahalaan</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-foreground mb-1.5">Tiyak na Lokasyon sa Ibayo-Tipas *</label>
-                <input type="text" required placeholder="Hal. Dr. Natividad St. malapit sa tulay..." class="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:bg-white focus:ring-2 focus:ring-primary focus:outline-none transition-all">
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-foreground mb-1.5">Salaysay o Detalye ng Ulat *</label>
-              <textarea required rows="4" placeholder="Ilarawan nang maayos at malinaw ang sitwasyon upang mapuntahan agad ng aming mga opisyal..." class="w-full bg-background border border-border rounded-xl p-4 text-xs sm:text-sm focus:bg-white focus:ring-2 focus:ring-primary focus:outline-none leading-relaxed transition-all"></textarea>
-            </div>
-
-            <div class="pt-2">
-              <button type="submit" class="w-full sm:w-auto rounded-full bg-primary hover:bg-primary-hover text-primary-foreground font-bold px-8 py-3 text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-2">
-                <i data-lucide="send" class="size-4"></i>
-                <span>Isumite ang Ulat sa BPSO Desk</span>
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <!-- 2. Tatlong Info Cards sa Ilalim (3 Columns) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
-          
-          <!-- Card 1: Data Privacy -->
-          <div class="p-6 rounded-2xl bg-card border border-border shadow-xs space-y-3 flex flex-col justify-start">
-            <div class="flex items-center gap-2 font-bold text-primary font-heading text-sm">
-              <i data-lucide="shield-check" class="size-4 shrink-0"></i>
-              <span>Data Privacy Protected</span>
-            </div>
-            <p class="text-xs text-muted-foreground leading-relaxed">
-              Ligtas at kumpidensyal ang inyong impormasyon alinsunod sa Data Privacy Act of 2012. Ang inyong ulat ay direktang maipapadala sa Desk Officer para sa agarang aksyon.
-            </p>
-          </div>
-
-          <!-- Card 2: Uri ng Sumbong -->
-          <div class="p-6 rounded-2xl bg-card border border-border shadow-xs space-y-3 flex flex-col justify-start">
-            <div class="font-bold text-foreground font-heading text-sm">
-              Mga Uri ng Karaniwang Sumbong:
-            </div>
-            <ul class="text-xs text-muted-foreground space-y-2">
-              <li class="flex items-center gap-2">
-                <span class="size-1.5 rounded-full bg-primary shrink-0"></span>
-                <span>Ingay o labis na videoke sa dis-oras ng gabi</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="size-1.5 rounded-full bg-primary shrink-0"></span>
-                <span>Pundidong ilaw sa poste / streetlights</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="size-1.5 rounded-full bg-primary shrink-0"></span>
-                <span>Baradong kanal at tambak ng basura</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="size-1.5 rounded-full bg-primary shrink-0"></span>
-                <span>Alagang aso o hayop na pagala-gala</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Card 3: Emergency Box -->
-          <div class="p-6 rounded-2xl bg-leaf text-primary-foreground shadow-sm space-y-3 flex flex-col justify-start">
-            <div class="font-bold text-sun font-heading text-sm flex items-center gap-2">
-              <i data-lucide="phone-call" class="size-4 shrink-0"></i>
-              <span>Para sa Agarang Emergency:</span>
-            </div>
-            <div class="text-xs space-y-2 text-primary-foreground/90">
-              <div>🚨 Medic / Ambulance 24/7: <strong class="text-sun block sm:inline">0962 743 8455</strong></div>
-              <div>🛡️ Barangay Hall Desk: <strong class="block sm:inline">0918 962 0231</strong></div>
-              <div>🚒 Taguig Command Center: <strong class="block sm:inline">(02) 8789-3200</strong></div>
-            </div>
-          </div>
-
-        </div>
-        
         </section>
 
+        <!-- ================= ANNOUNCEMENTS LIST ================= -->
+        <section id="announcements" class="texture-grid px-4 sm:px-8 py-12">
+
+          <div class="flex justify-end">
+            <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:underline">
+              <span>Tingnan ang lahat sa Facebook</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+
+            <!-- Card 1: Streethoops -->
+            <article class="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md card-hover flex flex-col justify-between">
+              <div>
+                <time class="text-xs font-semibold uppercase tracking-wide text-primary">Latest Program</time>
+                <h3 class="mt-2 text-lg font-bold font-heading text-foreground">Salamat, Mr. Streethoops at Hoop Jeep!</h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                  Taos-pusong pasasalamat kina MR. STREETHOOPS — Vontoi SanPedro at HOOP JEEP sa pagpunta at pagbibigay saya sa mga kabataan ng Nascor! Patuloy ang pagsuporta ng ating Punong Barangay Willy Flores sa ganitong mga programa at aktibidad para sa ating kabataan upang mas mabigyan natin sila ng pagkakataong mahasa ang kanilang talento at ma-enjoy ang larangan ng Sports.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+                <span class="text-muted-foreground">Sports & Kabataan</span>
+                <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="text-primary font-bold hover:underline flex items-center gap-1">
+                  <span>Facebook post</span><i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Card 2: Office Hours -->
+            <article class="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md card-hover flex flex-col justify-between">
+              <div>
+                <time class="text-xs font-semibold uppercase tracking-wide text-primary">Paalala</time>
+                <h3 class="mt-2 text-lg font-bold font-heading text-foreground">Oras ng Tanggapan</h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                  Bukas ang Barangay Hall tuwing Lunes hanggang Biyernes, <strong>7:00 AM – 4:00 PM</strong>, sa 700 Dr. Natividad Street, Ibayo-Tipas, Taguig City. Naka-standby ang BPSO 24/7 para sa mga emergency concern.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+                <span class="text-muted-foreground">Barangay Hall</span>
+                <span class="text-emerald-700 font-bold">Lunes – Biyernes</span>
+              </div>
+            </article>
+
+            <!-- Card 3: Contact -->
+            <article class="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md card-hover flex flex-col justify-between">
+              <div>
+                <time class="text-xs font-semibold uppercase tracking-wide text-primary">Kontak</time>
+                <h3 class="mt-2 text-lg font-bold font-heading text-foreground">Makipag-ugnayan sa Amin</h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                  Para sa mga katanungan at konsernong pambarangay, tumawag sa <strong>(02) 8525-9348</strong> o <strong>0918 962 0231</strong>, o mag-email sa <strong>brgy.ibayotipas03@gmail.com</strong>.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+                <a href="tel:09627438455" class="text-red-600 font-bold hover:underline">🚨 Medic: 0962 743 8455</a>
+                <a href="tel:09189620231" class="text-primary font-bold hover:underline">Tawagan</a>
+              </div>
+            </article>
+
+            <!--
+              PARA MAGDAGDAG NG BAGONG ANUNSYO:
+              Kopyahin ang isang <article>...</article> sa itaas, i-paste dito,
+              at palitan ang label, title, at text. Ilagay ang pinakabago sa unahan.
+            -->
+
+          </div>
+
+          <div class="mt-10 text-center">
+            <a href="index.html" class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-2.5 text-xs font-bold text-foreground hover:text-primary hover:bg-secondary transition-colors shadow-xs">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i><span>Bumalik sa Home</span>
+            </a>
+          </div>
+
+        </section>
       </main>
 
-      <!-- Footer -->
-      <footer class="bg-leaf text-primary-foreground border-t border-leaf-light mt-auto">
+      <!-- ================= CONTACT & FOOTER ================= -->
+      <footer id="contact" class="bg-leaf text-primary-foreground border-t border-leaf-light mt-auto">
         <div class="mx-auto max-w-7xl px-4 py-12">
           <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/70">
-            <div class="flex items-center gap-3">
-              <img src="assets/logo.png" alt="Barangay Seal" class="size-8 rounded-full object-contain bg-white p-0.5">
-              <span>© 2026 Barangay Ibayo-Tipas, Taguig City · Tuloy ang Serbisyo!</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <a href="admin.html" class="hover:text-sun font-bold flex items-center gap-1">
-                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-                <span>Admin Login</span>
-              </a>
-              <a href="tel:09189620231" class="hover:text-sun">0918 962 0231</a>
-            </div>
+            <div>© 2026 Barangay Ibayo-Tipas, Taguig City. Lahat ng Karapatan ay Nakalaan.</div>
+            <div>Tuloy ang Serbisyo! • Malinis, Ligtas, at Maunlad</div>
           </div>
         </div>
       </footer>
-
     </div>
-
   </div>
 
-  <!-- ================= DOCUMENT REQUEST MODAL ================= -->
+  <!-- ================= DOCUMENT REQUEST MODAL (so "Online Request" works on this page too) ================= -->
   <div id="request-modal" class="fixed inset-0 z-50 hidden bg-leaf-dark/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
     <div class="bg-card w-full max-w-xl rounded-2xl shadow-2xl border border-border overflow-hidden relative my-8">
-      
-      <!-- Modal Header -->
       <div class="bg-leaf text-primary-foreground p-5 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="size-9 rounded-full bg-sun text-sun-foreground flex items-center justify-center font-bold">
@@ -519,10 +420,8 @@
         </button>
       </div>
 
-      <!-- View 1: Form Fields View -->
       <div id="request-form-fields-view" class="p-6">
         <form id="document-request-form" class="space-y-4">
-          
           <div>
             <label class="block text-xs font-bold text-foreground mb-1">Uri ng Dokumento *</label>
             <select id="doc-type-select" required class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs font-semibold focus:ring-2 focus:ring-primary focus:outline-none">
@@ -534,15 +433,12 @@
               <option value="jobseeker">First-Time Jobseeker Certificate (RA 11261 - Libre)</option>
             </select>
           </div>
-
           <div class="bg-secondary/60 border border-border rounded-xl p-3.5 space-y-1.5">
             <div class="text-[11px] font-bold text-secondary-foreground flex items-center gap-1.5">
-              <i data-lucide="info" class="w-3.5 h-3.5"></i>
-              <span>Mga Kinakailangang Dalhin sa Pag-claim:</span>
+              <i data-lucide="info" class="w-3.5 h-3.5"></i><span>Mga Kinakailangang Dalhin sa Pag-claim:</span>
             </div>
             <ul id="doc-requirements-list" class="space-y-1"></ul>
           </div>
-
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold text-foreground mb-1">Buong Pangalan ng Aplikante *</label>
@@ -553,31 +449,23 @@
               <input type="tel" id="applicant-phone" required placeholder="09XXXXXXXXX" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
             </div>
           </div>
-
           <div>
             <label class="block text-xs font-bold text-foreground mb-1">Tirahan sa Ibayo-Tipas (Purok / Kalye) *</label>
             <input type="text" id="applicant-address" required placeholder="Hal. 700 Dr. Natividad St., Purok 2, Ibayo-Tipas" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
           </div>
-
           <div>
             <label class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
             <input type="text" id="applicant-purpose" required placeholder="Hal. Para sa Local Employment, Postal ID, o School" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
           </div>
-
           <div class="pt-2 flex items-center justify-end gap-3">
-            <button type="button" class="close-request-modal px-4 py-2 rounded-full text-xs font-bold text-muted-foreground hover:bg-secondary transition-colors">
-              Kanselahin
-            </button>
+            <button type="button" class="close-request-modal px-4 py-2 rounded-full text-xs font-bold text-muted-foreground hover:bg-secondary transition-colors">Kanselahin</button>
             <button type="submit" class="rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-6 py-2.5 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
-              <span>Isumite ang Aplikasyon</span>
-              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Isumite ang Aplikasyon</span><i data-lucide="check-circle" class="w-4 h-4"></i>
             </button>
           </div>
-
         </form>
       </div>
 
-      <!-- View 2: Printable Confirmation Stub -->
       <div id="request-confirmation-view" class="hidden p-6">
         <div id="printable-stub" class="border-2 border-dashed border-primary/40 rounded-2xl p-6 bg-secondary/30 space-y-4">
           <div class="text-center border-b border-border pb-3">
@@ -586,55 +474,30 @@
             <h4 class="text-base font-black text-foreground font-heading">BARANGAY IBAYO-TIPAS</h4>
             <div class="text-xs text-muted-foreground">Official Document Claim Stub</div>
           </div>
-
           <div class="bg-white p-4 rounded-xl border border-border text-center">
             <div class="text-xs text-muted-foreground font-semibold">Iyong Tracking & Reference Code:</div>
-            <div id="stub-tracking-code" class="text-2xl font-black text-primary tracking-wider my-1 font-mono">
-              BIT-2026-00000
-            </div>
+            <div id="stub-tracking-code" class="text-2xl font-black text-primary tracking-wider my-1 font-mono">BIT-2026-00000</div>
             <div class="text-[11px] text-primary font-bold">✓ Tagumpay na naitala sa database ng Barangay</div>
           </div>
-
           <div class="space-y-2 text-xs">
-            <div class="flex justify-between border-b border-border pb-1">
-              <span class="text-muted-foreground">Pangalan ng Aplikante:</span>
-              <span id="stub-name" class="font-bold text-foreground">-</span>
-            </div>
-            <div class="flex justify-between border-b border-border pb-1">
-              <span class="text-muted-foreground">Dokumentong Hinihiling:</span>
-              <span id="stub-doc" class="font-bold text-foreground">-</span>
-            </div>
-            <div class="flex justify-between border-b border-border pb-1">
-              <span class="text-muted-foreground">Contact Number:</span>
-              <span id="stub-phone" class="font-bold text-foreground">-</span>
-            </div>
-            <div class="flex justify-between border-b border-border pb-1">
-              <span class="text-muted-foreground">Address:</span>
-              <span id="stub-address" class="font-bold text-foreground">-</span>
-            </div>
-            <div class="flex justify-between pt-1 text-primary font-bold">
-              <span>Maaaring Kunin Sa:</span>
-              <span id="stub-pickup-date">-</span>
-            </div>
+            <div class="flex justify-between border-b border-border pb-1"><span class="text-muted-foreground">Pangalan ng Aplikante:</span><span id="stub-name" class="font-bold text-foreground">-</span></div>
+            <div class="flex justify-between border-b border-border pb-1"><span class="text-muted-foreground">Dokumentong Hinihiling:</span><span id="stub-doc" class="font-bold text-foreground">-</span></div>
+            <div class="flex justify-between border-b border-border pb-1"><span class="text-muted-foreground">Contact Number:</span><span id="stub-phone" class="font-bold text-foreground">-</span></div>
+            <div class="flex justify-between border-b border-border pb-1"><span class="text-muted-foreground">Address:</span><span id="stub-address" class="font-bold text-foreground">-</span></div>
+            <div class="flex justify-between pt-1 text-primary font-bold"><span>Maaaring Kunin Sa:</span><span id="stub-pickup-date">-</span></div>
           </div>
-
           <div class="text-[11px] text-emerald-900 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
             <strong class="text-emerald-950 font-bold block mb-0.5">✓ 100% LIBRENG SERBISYO:</strong>
             Walang bayad ang lahat ng dokumento! Dalhin lamang ang inyong <strong>orihinal na Valid ID na may address sa Barangay Ibayo-Tipas, Taguig</strong> kasama ang reference code na ito sa pagkuha sa Barangay Hall (700 Dr. Natividad St., Ibayo-Tipas).
           </div>
         </div>
-
         <div class="mt-6 flex flex-wrap items-center justify-between gap-3 no-print">
           <button id="print-stub-btn" class="rounded-full bg-leaf text-white px-5 py-2.5 text-xs font-bold flex items-center gap-2 hover:bg-leaf-dark transition-all">
-            <i data-lucide="printer" class="w-4 h-4"></i>
-            <span>I-print ang Claim Stub</span>
+            <i data-lucide="printer" class="w-4 h-4"></i><span>I-print ang Claim Stub</span>
           </button>
-          <button class="close-request-modal rounded-full bg-primary hover:bg-primary-hover text-white px-5 py-2.5 text-xs font-bold transition-all">
-            Tapos na (Close)
-          </button>
+          <button class="close-request-modal rounded-full bg-primary hover:bg-primary-hover text-white px-5 py-2.5 text-xs font-bold transition-all">Tapos na (Close)</button>
         </div>
       </div>
-
     </div>
   </div>
 
