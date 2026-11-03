@@ -269,9 +269,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const purok = document.getElementById('applicant-address')?.value.trim() || '';
       const purpose = document.getElementById('applicant-purpose')?.value.trim() || '';
 
-      // Pickup schedule: next business day
+      // Pickup schedule: the date the resident chose (falls back to next business day)
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      const formattedDate = getNextBusinessDay().toLocaleDateString('en-PH', options);
+      const pickupInput = document.getElementById('applicant-pickup-date')?.value || '';
+      let pickupDateObj = getNextBusinessDay();
+      if (pickupInput) {
+        const [y, m, d] = pickupInput.split('-').map(Number);
+        pickupDateObj = new Date(y, m - 1, d); // local date, avoids timezone shift
+      }
+      const formattedDate = pickupDateObj.toLocaleDateString('en-PH', options);
       const pickupString = `${formattedDate} (8:00 AM - 4:30 PM)`;
 
       const submitBtn = requestForm.querySelector('button[type="submit"]');
