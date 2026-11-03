@@ -457,6 +457,12 @@
             <label class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
             <input type="text" id="applicant-purpose" required placeholder="Hal. Para sa Local Employment, Postal ID, o School" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
           </div>
+
+          <div>
+            <label for="applicant-pickup-date" class="block text-xs font-bold text-foreground mb-1">Nais na Petsa ng Pagkuha (Scheduled Pick-up Date) *</label>
+            <input type="date" id="applicant-pickup-date" required class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            <p class="mt-1 text-[11px] text-muted-foreground">Lunes – Biyernes lamang, 7:00 AM – 4:00 PM (Barangay Hall).</p>
+          </div>
           <div class="pt-2 flex items-center justify-end gap-3">
             <button type="button" class="close-request-modal px-4 py-2 rounded-full text-xs font-bold text-muted-foreground hover:bg-secondary transition-colors">Kanselahin</button>
             <button type="submit" class="rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-6 py-2.5 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
@@ -500,6 +506,38 @@
       </div>
     </div>
   </div>
+
+  <!-- Pick-up date rules -->
+  <script>
+    (function () {
+      var input = document.getElementById('applicant-pickup-date');
+      if (!input) return;
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function toISO(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+
+      // Earliest date = next weekday after today
+      function nextWeekday() {
+        var d = new Date();
+        d.setDate(d.getDate() + 1);
+        while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+        return d;
+      }
+
+      input.min = toISO(nextWeekday());
+
+      input.addEventListener('input', function () {
+        if (!input.value) { input.setCustomValidity(''); return; }
+        var parts = input.value.split('-');
+        var day = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
+        input.setCustomValidity(
+          (day === 0 || day === 6)
+            ? 'Sarado ang Barangay Hall tuwing Sabado at Linggo. Pumili ng Lunes – Biyernes.'
+            : ''
+        );
+      });
+    })();
+  </script>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
