@@ -104,7 +104,30 @@
   </div>
 </header>
 
-
+  <!-- ================= MOBILE NAVIGATION CHIP BAR ================= -->
+  <div class="md:hidden overflow-x-auto py-2 px-3 bg-secondary/50 border-b border-border flex items-center gap-2 text-xs font-semibold whitespace-nowrap">
+    <a href="index.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="home" class="w-3.5 h-3.5 text-primary"></i><span>Home</span>
+    </a>
+    <a href="services.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="file-check-2" class="w-3.5 h-3.5 text-primary"></i><span>Services</span>
+    </a>
+    <a href="tracker.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1 font-bold text-primary">
+      <i data-lucide="search" class="w-3.5 h-3.5 text-primary"></i><span>Tracker</span>
+    </a>
+    <a href="announcements.html" class="px-3 py-1.5 rounded-full bg-primary text-primary-foreground shadow-xs flex items-center gap-1" aria-current="page">
+      <i data-lucide="megaphone" class="w-3.5 h-3.5"></i><span>Announcements</span>
+    </a>
+    <a href="about.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="landmark" class="w-3.5 h-3.5 text-primary"></i><span>About</span>
+    </a>
+    <a href="index.html#health" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-primary"></i><span>Health</span>
+    </a>
+    <a href="reklamo.html" class="px-3 py-1.5 rounded-full bg-white text-amber-700 border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-600"></i><span>e-Reklamo</span>
+    </a>
+  </div>
 
   <!-- ================= MOBILE DRAWER BACKDROP & MENU ================= -->
   <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden md:hidden transition-opacity"></div>
@@ -128,7 +151,7 @@
       <a href="announcements.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold" aria-current="page">
         <i data-lucide="megaphone" class="w-4 h-4"></i><span>Announcements</span>
       </a>
-      <a href="index.html#about" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+      <a href="about.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="landmark" class="w-4 h-4 text-primary"></i><span>About</span>
       </a>
       <a href="services.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground bg-primary/5">
@@ -192,7 +215,7 @@
         </a>
 
         <!-- About -->
-        <a href="index.html#about" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="about.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="landmark" class="w-4 h-4"></i>
           </div>
@@ -444,6 +467,12 @@
             <label class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
             <input type="text" id="applicant-purpose" required placeholder="Hal. Para sa Local Employment, Postal ID, o School" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
           </div>
+
+          <div>
+            <label for="applicant-pickup-date" class="block text-xs font-bold text-foreground mb-1">Nais na Petsa ng Pagkuha (Scheduled Pick-up Date) *</label>
+            <input type="date" id="applicant-pickup-date" required class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            <p class="mt-1 text-[11px] text-muted-foreground">Lunes – Biyernes lamang, 7:00 AM – 4:00 PM (Barangay Hall).</p>
+          </div>
           <div class="pt-2 flex items-center justify-end gap-3">
             <button type="button" class="close-request-modal px-4 py-2 rounded-full text-xs font-bold text-muted-foreground hover:bg-secondary transition-colors">Kanselahin</button>
             <button type="submit" class="rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-6 py-2.5 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
@@ -487,6 +516,38 @@
       </div>
     </div>
   </div>
+
+  <!-- Pick-up date rules -->
+  <script>
+    (function () {
+      var input = document.getElementById('applicant-pickup-date');
+      if (!input) return;
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function toISO(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+
+      // Earliest date = next weekday after today
+      function nextWeekday() {
+        var d = new Date();
+        d.setDate(d.getDate() + 1);
+        while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+        return d;
+      }
+
+      input.min = toISO(nextWeekday());
+
+      input.addEventListener('input', function () {
+        if (!input.value) { input.setCustomValidity(''); return; }
+        var parts = input.value.split('-');
+        var day = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
+        input.setCustomValidity(
+          (day === 0 || day === 6)
+            ? 'Sarado ang Barangay Hall tuwing Sabado at Linggo. Pumili ng Lunes – Biyernes.'
+            : ''
+        );
+      });
+    })();
+  </script>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
