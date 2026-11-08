@@ -57,6 +57,13 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('ibayo-theme') === 'dark' ? 'dark' : 'light';
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
 </head>
 <body class="min-h-full flex flex-col antialiased text-foreground bg-background">
 
@@ -109,6 +116,9 @@
 
       <!-- Header Actions: Online Request Only -->
       <div class="flex items-center gap-2 sm:gap-3">
+        <button id="theme-toggle" type="button" aria-label="Lumipat sa dark mode" aria-pressed="false" title="Lumipat sa dark mode" class="rounded-full border border-border bg-card p-2.5 text-foreground transition-colors hover:bg-secondary">
+          <i data-lucide="moon" class="h-4 w-4"></i>
+        </button>
         <button class="open-request-modal rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-4 py-2 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
           <i data-lucide="file-plus" class="w-3.5 h-3.5 shrink-0"></i>
           <span>Online Request</span>
@@ -410,9 +420,15 @@
             </div>
 
             <div class="pt-2">
-              <button type="submit" class="w-full sm:w-auto rounded-full bg-primary hover:bg-primary-hover text-primary-foreground font-bold px-8 py-3 text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-2">
+              <label for="complaint-truth-confirmation" class="mb-4 flex cursor-pointer items-start gap-3 rounded-xl border border-border bg-background p-4 text-xs leading-relaxed text-foreground">
+                <input type="checkbox" id="complaint-truth-confirmation" required class="mt-0.5 size-4 shrink-0 accent-primary focus:ring-2 focus:ring-primary">
+                <span>
+                  Pinatutunayan ko na ang lahat ng impormasyong isinumite ko ay totoo, mapatutunayan, at hindi gawa-gawa. Nauunawaan ko na maaari akong managot sa ilalim ng naaangkop na batas para sa sinadya, mapanlinlang, o maling reklamo.
+                </span>
+              </label>
+              <button type="submit" disabled class="w-full sm:w-auto rounded-full bg-primary hover:bg-primary-hover text-primary-foreground font-bold px-8 py-3 text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100">
                 <i data-lucide="send" class="size-4"></i>
-                <span>Isumite ang Ulat sa BPSO Desk</span>
+                <span>Isumite ang Reklamo</span>
               </button>
             </div>
           </form>
@@ -560,8 +576,18 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
-            <input type="text" id="applicant-purpose" required placeholder="Hal. Para sa Local Employment, Postal ID, o School" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            <label for="applicant-purpose" class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
+            <select id="applicant-purpose" required class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+              <option value="" selected disabled>Pumili ng layunin</option>
+              <option value="Local Employment">Local Employment</option>
+              <option value="Postal ID">Postal ID</option>
+              <option value="School Requirement">School Requirement</option>
+              <option value="Others">Others</option>
+            </select>
+            <div id="applicant-purpose-other-wrap" class="hidden mt-2">
+              <label for="applicant-purpose-other" class="block text-xs font-bold text-foreground mb-1">Ilagay ang ibang layunin *</label>
+              <input type="text" id="applicant-purpose-other" placeholder="Ilagay ang layunin" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            </div>
           </div>
 
           <div>
