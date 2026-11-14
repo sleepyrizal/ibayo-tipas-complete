@@ -159,6 +159,10 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: 'Bricolage Grotesque', sans-serif;
 }
 
+.nav-item {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Subtle background texture grid */
 .texture-grid {
   background-image: radial-gradient(rgba(31, 106, 78, 0.08) 1px, transparent 1px);
