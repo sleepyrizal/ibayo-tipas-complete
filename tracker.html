@@ -58,6 +58,13 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('ibayo-theme') === 'dark' ? 'dark' : 'light';
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
 </head>
 
 <body class="min-h-full flex flex-col antialiased text-foreground bg-background">
@@ -117,6 +124,9 @@
 
       <!-- Header Actions: Online Request Only -->
       <div class="flex items-center gap-2 sm:gap-3">
+        <button id="theme-toggle" type="button" aria-label="Lumipat sa dark mode" aria-pressed="false" title="Lumipat sa dark mode" class="rounded-full border border-border bg-card p-2.5 text-foreground transition-colors hover:bg-secondary">
+          <i data-lucide="moon" class="h-4 w-4"></i>
+        </button>
         <button
           class="open-request-modal rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-4 py-2 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
           <i data-lucide="file-plus" class="w-3.5 h-3.5 shrink-0"></i>
@@ -189,39 +199,29 @@
 
     <nav class="mt-4 space-y-1 overflow-y-auto flex-1 text-xs font-semibold">
       <a href="index.html#home"
-        class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+        class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="home" class="w-4 h-4 text-primary"></i>
         <span>Home</span>
       </a>
-      <a href="announcements.html"
-  class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-  <i data-lucide="megaphone" class="w-4 h-4 text-primary"></i>
-  <span>Announcements</span>
-</a>
-      <a href="about.html"
-        class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-        <i data-lucide="landmark" class="w-4 h-4 text-primary"></i>
-        <span>About</span>
-      </a>
       <a href="services.html"
-        class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground bg-primary/5">
+        class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground bg-primary/5">
         <i data-lucide="file-check-2" class="w-4 h-4 text-primary"></i>
         <span class="flex-1">Barangay Services</span>
         <span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full font-bold">Docs</span>
       </a>
       <a href="tracker.html"
-        class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold">
+        class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold">
         <i data-lucide="search-check" class="w-4 h-4"></i>
         <span class="flex-1">Live Status Tracker</span>
         <span class="text-[10px] bg-white text-primary px-2 py-0.5 rounded-full font-bold">Active</span>
       </a>
       <a href="health-center.html"
-  class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+  class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
   <i data-lucide="heart-pulse" class="w-4 h-4 text-primary"></i>
   <span>Health Center</span>
 </a>
       <a href="reklamo.html"
-        class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+        class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
         <span>e-Reklamo Desk</span>
       </a>
@@ -259,7 +259,7 @@
 
         <!-- Home -->
         <a href="index.html#home"
-          class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+          class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
           <div
             class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="home" class="w-4 h-4"></i>
@@ -285,7 +285,7 @@
 
         <!-- Barangay Services -->
         <a href="services.html"
-          class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+          class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
           <div
             class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="file-check-2" class="w-4 h-4"></i>
@@ -301,7 +301,7 @@
 
         <!-- Live Verification & Status Sidebar Link (Active Page) -->
         <a href="tracker.html"
-          class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-[#0d5c46] text-white transition-colors group shadow-sm">
+          class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-[#0d5c46] text-white group shadow-sm">
           <div
             class="size-8 rounded-lg bg-emerald-800/50 text-emerald-100 flex items-center justify-center transition-colors">
             <i data-lucide="search-check" class="w-4 h-4"></i>
@@ -317,7 +317,7 @@
 
         <!-- Health Center -->
 <a href="health-center.html"
-  class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+  class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
   <div
     class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
     <i data-lucide="heart-pulse" class="w-4 h-4"></i>
@@ -330,7 +330,7 @@
 
         <!-- e-Reklamo Desk -->
         <a href="reklamo.html"
-          class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+          class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
           <div
             class="size-8 rounded-lg bg-secondary text-amber-700 group-hover:bg-amber-600 group-hover:text-white flex items-center justify-center transition-colors">
             <i data-lucide="alert-triangle" class="w-4 h-4"></i>
@@ -664,8 +664,9 @@
                 class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
             </div>
             <div>
-              <label class="block text-xs font-bold text-foreground mb-1">Mobile / Contact Number *</label>
-              <input type="tel" id="applicant-phone" required placeholder="09XXXXXXXXX"
+              <label class="block text-xs font-bold text-foreground mb-1">Mobile / Contact Number (12 digits) *</label>
+              <input type="tel" id="applicant-phone" required inputmode="numeric"
+                pattern="[0-9]{12}" minlength="12" maxlength="12" title="Enter exactly 12 digits." placeholder="12 digits"
                 class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
             </div>
           </div>
@@ -678,10 +679,18 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
-            <input type="text" id="applicant-purpose" required
-              placeholder="Hal. Para sa Local Employment, Postal ID, o School"
-              class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            <label for="applicant-purpose" class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
+            <select id="applicant-purpose" required class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+              <option value="" selected disabled>Pumili ng layunin</option>
+              <option value="Local Employment">Local Employment</option>
+              <option value="Postal ID">Postal ID</option>
+              <option value="School Requirement">School Requirement</option>
+              <option value="Others">Others</option>
+            </select>
+            <div id="applicant-purpose-other-wrap" class="hidden mt-2">
+              <label for="applicant-purpose-other" class="block text-xs font-bold text-foreground mb-1">Ilagay ang ibang layunin *</label>
+              <input type="text" id="applicant-purpose-other" placeholder="Ilagay ang layunin" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            </div>
           </div>
 
           <div>

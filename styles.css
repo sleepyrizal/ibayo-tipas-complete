@@ -23,14 +23,144 @@
   --radius: 0.875rem;
 }
 
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #111a16;
+  --foreground: #e4eee8;
+  --card: #19251f;
+  --card-foreground: #e4eee8;
+  --secondary: #25352c;
+  --secondary-foreground: #c5d8cb;
+  --muted: #202e26;
+  --muted-foreground: #a4b8aa;
+  --border: #35473c;
+}
+
 body {
   font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--background);
   color: var(--foreground);
 }
 
+html[data-theme="dark"] body,
+html[data-theme="dark"] .bg-background,
+html[data-theme="dark"] [class~="bg-background/95"] {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+html[data-theme="dark"] .bg-card {
+  background-color: var(--card);
+}
+
+html[data-theme="dark"] .bg-white:not(img) {
+  background-color: var(--card);
+}
+
+html[data-theme="dark"] #printable-stub .bg-white {
+  background-color: #ffffff;
+}
+
+html[data-theme="dark"] [class*="bg-secondary"],
+html[data-theme="dark"] .bg-muted {
+  background-color: var(--secondary);
+}
+
+html[data-theme="dark"] .text-foreground,
+html[data-theme="dark"] .text-card-foreground {
+  color: var(--foreground);
+}
+
+html[data-theme="dark"] .text-secondary-foreground {
+  color: var(--secondary-foreground);
+}
+
+html[data-theme="dark"] .text-muted-foreground {
+  color: var(--muted-foreground);
+}
+
+html[data-theme="dark"] .border-border,
+html[data-theme="dark"] [class*="border-slate-"] {
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] [class*="text-slate-"] {
+  color: #c4d0c8;
+}
+
+html[data-theme="dark"] [class*="text-gray-"] {
+  color: #c4d0c8;
+}
+
+html[data-theme="dark"] [class*="bg-slate-50"],
+html[data-theme="dark"] [class*="bg-slate-100"],
+html[data-theme="dark"] [class*="bg-slate-200"],
+html[data-theme="dark"] [class*="bg-emerald-50"],
+html[data-theme="dark"] [class*="bg-emerald-100"],
+html[data-theme="dark"] [class*="bg-green-50"],
+html[data-theme="dark"] [class*="bg-green-100"],
+html[data-theme="dark"] [class*="bg-blue-50"],
+html[data-theme="dark"] [class*="bg-blue-100"],
+html[data-theme="dark"] [class*="bg-amber-50"],
+html[data-theme="dark"] [class*="bg-amber-100"],
+html[data-theme="dark"] [class*="bg-rose-50"],
+html[data-theme="dark"] [class*="bg-rose-100"],
+html[data-theme="dark"] [class*="bg-red-50"],
+html[data-theme="dark"] [class*="bg-red-100"],
+html[data-theme="dark"] [class*="bg-purple-50"] {
+  background-color: #25352c;
+}
+
+html[data-theme="dark"] [class*="text-emerald-"] {
+  color: #a7f3d0;
+}
+
+html[data-theme="dark"] [class*="text-green-"] {
+  color: #bbf7d0;
+}
+
+html[data-theme="dark"] [class*="text-blue-"] {
+  color: #bfdbfe;
+}
+
+html[data-theme="dark"] [class*="text-amber-"],
+html[data-theme="dark"] [class*="text-yellow-"] {
+  color: #fde68a;
+}
+
+html[data-theme="dark"] [class*="text-rose-"],
+html[data-theme="dark"] [class*="text-red-"] {
+  color: #fecdd3;
+}
+
+html[data-theme="dark"] [class*="text-purple-"] {
+  color: #e9d5ff;
+}
+
+html[data-theme="dark"] [class*="text-orange-"] {
+  color: #fed7aa;
+}
+
+html[data-theme="dark"] [class*="border-emerald-"],
+html[data-theme="dark"] [class*="border-green-"],
+html[data-theme="dark"] [class*="border-blue-"],
+html[data-theme="dark"] [class*="border-amber-"],
+html[data-theme="dark"] [class*="border-rose-"],
+html[data-theme="dark"] [class*="border-red-"],
+html[data-theme="dark"] [class*="border-purple-"] {
+  border-color: #496052;
+}
+
+html[data-theme="dark"] .texture-grid {
+  background-image: radial-gradient(rgba(164, 184, 170, 0.1) 1px, transparent 1px);
+}
+
 h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.nav-item {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Subtle background texture grid */

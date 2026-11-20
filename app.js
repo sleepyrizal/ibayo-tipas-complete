@@ -70,6 +70,29 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    function updateThemeToggle(isDark) {
+      document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('aria-label', isDark ? 'Lumipat sa default na tema' : 'Lumipat sa dark mode');
+      themeToggle.title = isDark ? 'Lumipat sa default na tema' : 'Lumipat sa dark mode';
+      themeToggle.innerHTML = `<i data-lucide="${isDark ? 'sun' : 'moon'}" class="h-4 w-4"></i>`;
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    updateThemeToggle(document.documentElement.dataset.theme === 'dark');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.dataset.theme !== 'dark';
+      updateThemeToggle(isDark);
+      try {
+        localStorage.setItem('ibayo-theme', isDark ? 'dark' : 'light');
+      } catch (error) {
+        console.warn('Theme preference could not be saved:', error);
+      }
+    });
+  }
+
   // --- Mobile Sidebar Drawer Toggle ---
   const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
   const mobileSidebarClose = document.getElementById('mobile-sidebar-close');
@@ -158,6 +181,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const requestForm = document.getElementById('document-request-form');
   const confirmationView = document.getElementById('request-confirmation-view');
   const formFieldsView = document.getElementById('request-form-fields-view');
+  const purposeSelect = document.getElementById('applicant-purpose');
+  const purposeOtherWrap = document.getElementById('applicant-purpose-other-wrap');
+  const purposeOtherInput = document.getElementById('applicant-purpose-other');
+
+  function updatePurposeOtherVisibility() {
+    if (!purposeSelect || !purposeOtherWrap || !purposeOtherInput) return;
+
+    const showOtherInput = purposeSelect.value === 'Others';
+    purposeOtherWrap.classList.toggle('hidden', !showOtherInput);
+    purposeOtherInput.required = showOtherInput;
+    if (!showOtherInput) purposeOtherInput.value = '';
+  }
+
+  if (purposeSelect) {
+    purposeSelect.addEventListener('change', updatePurposeOtherVisibility);
+    updatePurposeOtherVisibility();
+  }
 
   function openModal(defaultDoc = '') {
     if (requestModal) {
@@ -267,7 +307,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const docTypeName = docSelect?.options[docSelect.selectedIndex]?.text || 'Barangay Document';
       const contactNo = document.getElementById('applicant-phone')?.value.trim() || '';
       const purok = document.getElementById('applicant-address')?.value.trim() || '';
-      const purpose = document.getElementById('applicant-purpose')?.value.trim() || '';
+      const selectedPurpose = purposeSelect?.value || '';
+      const otherPurpose = purposeOtherInput?.value.trim() || '';
+      const purpose = selectedPurpose === 'Others' ? `Others: ${otherPurpose}` : selectedPurpose;
 
       // Pickup schedule: the date the resident chose (falls back to next business day)
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -318,6 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       requestForm.reset();
+      updatePurposeOtherVisibility();
       showToast(`Tagumpay! Tracking Code: ${trackingCode}`);
     });
   }
@@ -434,8 +477,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- e-Reklamo / Citizen Helpdesk Form ---
   const complaintForm = document.getElementById('complaint-form');
   if (complaintForm) {
+    const truthConfirmation = document.getElementById('complaint-truth-confirmation');
+    const submitBtn = complaintForm.querySelector('button[type="submit"]');
+
+    if (truthConfirmation && submitBtn) {
+      submitBtn.disabled = !truthConfirmation.checked;
+      truthConfirmation.addEventListener('change', () => {
+        submitBtn.disabled = !truthConfirmation.checked;
+      });
+    }
+
     complaintForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      if (!truthConfirmation?.checked) {
+        truthConfirmation?.focus();
+        return;
+      }
 
       const db = getDb();
       if (!db) return;
@@ -447,7 +505,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const loc = complaintForm.querySelector('input[placeholder*="Dr. Natividad"]')?.value.trim() || '';
       const details = complaintForm.querySelector('textarea')?.value.trim() || '';
 
-      const submitBtn = complaintForm.querySelector('button[type="submit"]');
       setButtonBusy(submitBtn, true, 'Isinusumite...');
 
       const { data, error } = await db.rpc('submit_reklamo', {
@@ -459,6 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       setButtonBusy(submitBtn, false);
+      if (truthConfirmation && submitBtn) submitBtn.disabled = !truthConfirmation.checked;
 
       if (error || !data) {
         console.error('submit_reklamo error:', error);
@@ -467,7 +525,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       complaintForm.reset();
-      showToast(`Ulat naipadala na! Reference Ticket: ${data}. Aksyunan ito ng BPSO Desk.`);
+      if (truthConfirmation && submitBtn) submitBtn.disabled = true;
+      showToast('Matagumpay na naipadala ang inyong ulat sa BPSO Desk.');
     });
   }
 
