@@ -443,6 +443,61 @@
 
           </div>
         </section>
+
+        <!-- ================= MAP / HANAPIN KAMI ================= -->
+        <section id="map" class="px-4 sm:px-8 py-10 sm:py-14 bg-background">
+          <div class="mb-6 max-w-2xl">
+            <p class="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary">Hanapin Kami</p>
+            <h2 class="mt-1 text-2xl sm:text-3xl font-bold font-heading text-foreground">Barangay Hall Location</h2>
+            <p class="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Bisitahin kami sa Barangay Hall para sa mga serbisyo, dokumento, at tulong ng barangay.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Address card -->
+            <div class="lg:col-span-4 rounded-2xl border border-border bg-card p-6 space-y-4">
+              <ul class="space-y-3 text-xs sm:text-sm text-foreground">
+                <li class="flex items-start gap-3">
+                  <i data-lucide="map-pin" class="size-4 text-primary shrink-0 mt-0.5"></i>
+                  <span>700 Dr. Natividad Street, Barangay Ibayo-Tipas, Taguig City</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i data-lucide="clock" class="size-4 text-primary shrink-0 mt-0.5"></i>
+                  <span>Monday – Friday, 7:00 AM – 4:00 PM</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i data-lucide="phone" class="size-4 text-primary shrink-0 mt-0.5"></i>
+                  <a href="tel:+639189620231" class="hover:text-primary font-semibold">0918 962 0231</a>
+                </li>
+              </ul>
+              <div class="flex flex-col gap-2 pt-2">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Barangay+Hall+Ibayo-Tipas%2C+700+Dr.+Natividad+Street%2C+Taguig+City" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-full bg-sun px-5 py-2.5 text-xs font-bold text-sun-foreground shadow-md transition-transform hover:scale-105">
+                  <i data-lucide="navigation" class="size-4"></i>
+                  <span>Get Directions</span>
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Barangay+Hall+Ibayo-Tipas%2C+700+Dr.+Natividad+Street%2C+Taguig+City" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-xs font-semibold text-foreground hover:bg-secondary transition-colors">
+                  <i data-lucide="external-link" class="size-4"></i>
+                  <span>Open in Google Maps</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Google Map -->
+            <div class="lg:col-span-8 rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
+              <iframe
+                title="Mapa ng Barangay Ibayo-Tipas Hall, Taguig City"
+                src="https://www.google.com/maps?q=Barangay+Hall+Ibayo-Tipas%2C+700+Dr.+Natividad+Street%2C+Taguig+City&output=embed"
+                class="w-full block"
+                style="height: 380px; border: 0;"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+          </div>
+        </section>
       </main>
 
       <!-- ================= SLIM FOOTER (full contact info now on contact.html) ================= -->
@@ -485,6 +540,9 @@
               Tuloy ang Serbisyo! • Malinis, Ligtas, at Maunlad
             </div>
           </div>
+
+        </div>
+      </footer>
 
     </div>
 
@@ -543,8 +601,8 @@
               <input type="text" id="applicant-name" required placeholder="Hal. Maria Santos Cruz" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
             </div>
             <div>
-              <label class="block text-xs font-bold text-foreground mb-1">Mobile / Contact Number (12 digits) *</label>
-              <input type="tel" id="applicant-phone" required inputmode="numeric" pattern="[0-9]{12}" minlength="12" maxlength="12" title="Enter exactly 12 digits." placeholder="12 digits" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+              <label class="block text-xs font-bold text-foreground mb-1">Mobile / Contact Number (11 digits) *</label>
+              <input type="tel" id="applicant-phone" required inputmode="numeric" autocomplete="tel" pattern="[0-9]{11}" minlength="11" maxlength="11" title="Enter exactly 11 digits." placeholder="09XXXXXXXXX" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
             </div>
           </div>
 
@@ -677,6 +735,33 @@
             : ''
         );
       });
+    })();
+  </script>
+
+  <!-- Phone number rules: digits only, exactly 11 -->
+  <script>
+    (function () {
+      var phone = document.getElementById('applicant-phone');
+      if (!phone) return;
+
+      function check() {
+        // Remove anything that is not a digit (letters, spaces, dashes, +) and cap at 11
+        var digits = phone.value.replace(/\D/g, '').slice(0, 11);
+        if (phone.value !== digits) phone.value = digits;
+        phone.setCustomValidity(
+          digits.length === 0 || digits.length === 11
+            ? ''
+            : 'Ilagay ang eksaktong 11 digits (' + digits.length + ' pa lang).'
+        );
+      }
+
+      phone.addEventListener('input', check);
+      phone.addEventListener('paste', function () { setTimeout(check, 0); });
+
+      // Clear any leftover error message when the form is reset
+      if (phone.form) {
+        phone.form.addEventListener('reset', function () { phone.setCustomValidity(''); });
+      }
     })();
   </script>
 

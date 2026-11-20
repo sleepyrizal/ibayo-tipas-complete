@@ -553,6 +553,33 @@
     })();
   </script>
 
+  <!-- Phone number rules: digits only, exactly 11 -->
+  <script>
+    (function () {
+      var phone = document.getElementById('applicant-phone');
+      if (!phone) return;
+
+      function check() {
+        // Remove anything that is not a digit (letters, spaces, dashes, +) and cap at 11
+        var digits = phone.value.replace(/\D/g, '').slice(0, 11);
+        if (phone.value !== digits) phone.value = digits;
+        phone.setCustomValidity(
+          digits.length === 0 || digits.length === 11
+            ? ''
+            : 'Ilagay ang eksaktong 11 digits (' + digits.length + ' pa lang).'
+        );
+      }
+
+      phone.addEventListener('input', check);
+      phone.addEventListener('paste', function () { setTimeout(check, 0); });
+
+      // Clear any leftover error message when the form is reset
+      if (phone.form) {
+        phone.form.addEventListener('reset', function () { phone.setCustomValidity(''); });
+      }
+    })();
+  </script>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
