@@ -12,6 +12,8 @@ let currentFilterStatus = 'all';
 let isLoggedIn = false;
 let reklamoAnalyticsChart = null;
 let reklamoAnalyticsChartView = 'bar';
+let selectedReklamoWeek = null;
+let selectedReklamoDateRange = null;
 
 // ---------------------------------------------------------------------
 // Helpers
@@ -367,6 +369,45 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
+  const reklamoWeekSelect = document.getElementById('admin-reklamo-week-select');
+  if (reklamoWeekSelect) {
+    reklamoWeekSelect.addEventListener('change', () => {
+      if (reklamoWeekSelect.value === 'custom') return;
+      selectedReklamoDateRange = null;
+      selectedReklamoWeek = reklamoWeekSelect.value;
+      document.getElementById('admin-reklamo-range-start').value = '';
+      document.getElementById('admin-reklamo-range-end').value = '';
+      document.getElementById('admin-reklamo-range-error').classList.add('hidden');
+      renderReklamoAnalytics();
+    });
+  }
+
+  const reklamoRangeApply = document.getElementById('admin-reklamo-range-apply');
+  if (reklamoRangeApply) {
+    reklamoRangeApply.addEventListener('click', () => {
+      const startValue = document.getElementById('admin-reklamo-range-start').value;
+      const endValue = document.getElementById('admin-reklamo-range-end').value;
+      const error = document.getElementById('admin-reklamo-range-error');
+      if (!startValue || !endValue) {
+        error.textContent = 'Pumili ng petsa ng simula at pagtatapos.';
+        error.classList.remove('hidden');
+        return;
+      }
+
+      const startDate = new Date(`${startValue}T00:00:00`);
+      const endDate = new Date(`${endValue}T00:00:00`);
+      if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime()) || startDate > endDate) {
+        error.textContent = 'Dapat ang petsa ng simula ay kapareho o mas maaga sa petsa ng pagtatapos.';
+        error.classList.remove('hidden');
+        return;
+      }
+
+      selectedReklamoDateRange = { start: startValue, end: endValue };
+      error.classList.add('hidden');
+      renderReklamoAnalytics();
+    });
+  }
+
   // --- Database tab: manual refresh ---
   const btnRefreshData = document.getElementById('btn-refresh-data');
   if (btnRefreshData) {
@@ -587,6 +628,7 @@ function renderReklamoAnalytics() {
   const canvas = document.getElementById('admin-reklamo-analytics-canvas');
   const emptyState = document.getElementById('admin-reklamo-analytics-empty');
   const range = document.getElementById('admin-reklamo-analytics-range');
+  const weekSelect = document.getElementById('admin-reklamo-week-select');
   const total = document.getElementById('admin-reklamo-analytics-total');
   const topComplaint = document.getElementById('admin-reklamo-analytics-top');
   const resolution = document.getElementById('admin-reklamo-analytics-resolution');
@@ -598,20 +640,73 @@ function renderReklamoAnalytics() {
     reklamoAnalyticsChart = null;
   }
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const startDate = new Date(today);
-  startDate.setDate(startDate.getDate() - 6);
-  const endDate = new Date(today);
-  endDate.setDate(endDate.getDate() + 1);
-  range.textContent = `${startDate.toLocaleDateString('en-PH', { month: 'short', day: 'numeric' })} – ${today.toLocaleDateString('en-PH', { month: 'short', day: 'numeric' })}`;
+  const startOfWeek = (date) => {
+    const start = new Date(date);
+    start.setHours(0, 0, 0, 0);
+    start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
+    return start;
+  };
+  const weekKey = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+  const formatDate = (date) => date.toLocaleDateString('en-PH', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+  const currentWeekStart = startOfWeek(new Date());
+  const currentWeekKey = weekKey(currentWeekStart);
+  const availableWeeks = new Map([[currentWeekKey, currentWeekStart]]);
+  activeReklamo.forEach((item) => {
+    const createdAt = new Date(item.createdAt);
+    if (Number.isNaN(createdAt.getTime())) return;
+    const weekStart = startOfWeek(createdAt);
+    availableWeeks.set(weekKey(weekStart), weekStart);
+  });
+  const sortedWeeks = [...availableWeeks.entries()].sort(([keyA], [keyB]) => keyB.localeCompare(keyA));
+  if (weekSelect) {
+    if (!selectedReklamoDateRange && !availableWeeks.has(selectedReklamoWeek)) {
+      selectedReklamoWeek = currentWeekKey;
+    }
+    const customOption = selectedReklamoDateRange
+      ? `<option value="custom">Custom Date: ${formatDate(new Date(`${selectedReklamoDateRange.start}T00:00:00`))} – ${formatDate(new Date(`${selectedReklamoDateRange.end}T00:00:00`))}</option>`
+      : '';
+    weekSelect.innerHTML = customOption + sortedWeeks.map(([key, weekStart]) => {
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekEnd.getDate() + 6);
+      const currentLabel = key === currentWeekKey ? ' (Kasalukuyan)' : '';
+      return `<option value="${key}">${formatDate(weekStart)} – ${formatDate(weekEnd)}${currentLabel}</option>`;
+    }).join('');
+    weekSelect.value = selectedReklamoDateRange ? 'custom' : selectedReklamoWeek;
+  }
+  const periodStart = selectedReklamoDateRange
+    ? new Date(`${selectedReklamoDateRange.start}T00:00:00`)
+    : availableWeeks.get(selectedReklamoWeek) || currentWeekStart;
+  const periodEndExclusive = selectedReklamoDateRange
+    ? new Date(`${selectedReklamoDateRange.end}T00:00:00`)
+    : new Date(periodStart);
+  if (selectedReklamoDateRange) {
+    periodEndExclusive.setDate(periodEndExclusive.getDate() + 1);
+  } else {
+    periodEndExclusive.setDate(periodEndExclusive.getDate() + 7);
+  }
+  const periodEndInclusive = new Date(periodEndExclusive);
+  periodEndInclusive.setDate(periodEndInclusive.getDate() - 1);
+  const selectedPeriodLabel = `${formatDate(periodStart)} – ${formatDate(periodEndInclusive)}`;
+  const emptyPeriodMessage = selectedReklamoDateRange
+    ? 'Walang reklamo sa napiling panahon.'
+    : 'Walang reklamo sa napiling linggo.';
+  range.textContent = selectedPeriodLabel;
 
   const categoryCounts = new Map();
   let weeklyTotal = 0;
   let resolvedTotal = 0;
   activeReklamo.forEach((item) => {
     const createdAt = new Date(item.createdAt);
-    if (Number.isNaN(createdAt.getTime()) || createdAt < startDate || createdAt >= endDate) return;
+    if (Number.isNaN(createdAt.getTime()) || createdAt < periodStart || createdAt >= periodEndExclusive) return;
 
     const category = String(item.complaintType || '').trim() || 'Hindi tinukoy';
     categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
@@ -646,7 +741,8 @@ function renderReklamoAnalytics() {
   if (topCategories.length === 0) {
     canvas.classList.add('hidden');
     emptyState.classList.remove('hidden');
-    rankingList.innerHTML = '<p class="text-xs text-slate-400">Walang reklamo sa nakalipas na 7 araw.</p>';
+    emptyState.textContent = emptyPeriodMessage;
+    rankingList.innerHTML = `<p class="text-xs text-slate-400">${emptyPeriodMessage}</p>`;
     return;
   }
 
@@ -682,7 +778,7 @@ function renderReklamoAnalytics() {
   emptyState.classList.add('hidden');
   canvas.classList.remove('hidden');
   const isBarChart = reklamoAnalyticsChartView === 'bar';
-  canvas.setAttribute('aria-label', `${isBarChart ? 'Bar chart' : 'Doughnut chart'} ng mga uri ng reklamo sa nakalipas na 7 araw`);
+  canvas.setAttribute('aria-label', `${isBarChart ? 'Bar chart' : 'Doughnut chart'} ng mga uri ng reklamo para sa ${selectedPeriodLabel}`);
   reklamoAnalyticsChart = new window.Chart(canvas, {
     type: isBarChart ? 'bar' : 'doughnut',
     data: {
