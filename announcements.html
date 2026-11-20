@@ -328,60 +328,10 @@
             </a>
           </div>
 
-          <div class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div id="announcements-grid" class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
 
-            <!-- Card 1: Streethoops -->
-            <article class="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md card-hover flex flex-col justify-between">
-              <div>
-                <time class="text-xs font-semibold uppercase tracking-wide text-primary">Latest Program</time>
-                <h3 class="mt-2 text-lg font-bold font-heading text-foreground">Salamat, Mr. Streethoops at Hoop Jeep!</h3>
-                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                  Taos-pusong pasasalamat kina MR. STREETHOOPS — Vontoi SanPedro at HOOP JEEP sa pagpunta at pagbibigay saya sa mga kabataan ng Nascor! Patuloy ang pagsuporta ng ating Punong Barangay Willy Flores sa ganitong mga programa at aktibidad para sa ating kabataan upang mas mabigyan natin sila ng pagkakataong mahasa ang kanilang talento at ma-enjoy ang larangan ng Sports.
-                </p>
-              </div>
-              <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
-                <span class="text-muted-foreground">Sports & Kabataan</span>
-                <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="text-primary font-bold hover:underline flex items-center gap-1">
-                  <span>Facebook post</span><i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-              </div>
-            </article>
-
-            <!-- Card 2: Office Hours -->
-            <article class="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md card-hover flex flex-col justify-between">
-              <div>
-                <time class="text-xs font-semibold uppercase tracking-wide text-primary">Paalala</time>
-                <h3 class="mt-2 text-lg font-bold font-heading text-foreground">Oras ng Tanggapan</h3>
-                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                  Bukas ang Barangay Hall tuwing Lunes hanggang Biyernes, <strong>7:00 AM – 4:00 PM</strong>, sa 700 Dr. Natividad Street, Ibayo-Tipas, Taguig City. Naka-standby ang BPSO 24/7 para sa mga emergency concern.
-                </p>
-              </div>
-              <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
-                <span class="text-muted-foreground">Barangay Hall</span>
-                <span class="text-emerald-700 font-bold">Lunes – Biyernes</span>
-              </div>
-            </article>
-
-            <!-- Card 3: Contact -->
-            <article class="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md card-hover flex flex-col justify-between">
-              <div>
-                <time class="text-xs font-semibold uppercase tracking-wide text-primary">Kontak</time>
-                <h3 class="mt-2 text-lg font-bold font-heading text-foreground">Makipag-ugnayan sa Amin</h3>
-                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                  Para sa mga katanungan at konsernong pambarangay, tumawag sa <strong>(02) 8525-9348</strong> o <strong>0918 962 0231</strong>, o mag-email sa <strong>brgy.ibayotipas03@gmail.com</strong>.
-                </p>
-              </div>
-              <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
-                <a href="tel:09627438455" class="text-red-600 font-bold hover:underline">🚨 Medic: 0962 743 8455</a>
-                <a href="tel:09189620231" class="text-primary font-bold hover:underline">Tawagan</a>
-              </div>
-            </article>
-
-            <!--
-              PARA MAGDAGDAG NG BAGONG ANUNSYO:
-              Kopyahin ang isang <article>...</article> sa itaas, i-paste dito,
-              at palitan ang label, title, at text. Ilagay ang pinakabago sa unahan.
-            -->
+            <!-- Mga anunsyo ay galing sa database. I-edit sa admin.html > Announcements tab. -->
+            <p class="col-span-full text-center text-sm text-muted-foreground py-10">Naglo-load ng mga anunsyo...</p>
 
           </div>
 
@@ -584,5 +534,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="app.js"></script>
+  <script src="announcements-public.js"></script>
 </body>
 </html>

@@ -237,3 +237,61 @@ $$;
 
 revoke all on function public.track_application(text) from public;
 grant execute on function public.track_application(text) to anon, authenticated;
+
+-- =====================================================================
+-- 7. ANNOUNCEMENTS (edited in admin.html, shown on announcements.html)
+--    Public (anon) visitors can only READ rows where published = true.
+--    Logged-in staff can create / edit / hide / delete.
+-- =====================================================================
+create table if not exists public.announcements (
+  id          uuid primary key default gen_random_uuid(),
+  label       text not null default 'Anunsyo',   -- small tag above the title
+  title       text not null check (length(title) between 2 and 150),
+  body        text not null check (length(body)  between 2 and 3000),
+  category    text,                              -- footer text, left side
+  link_url    text,                              -- optional (https:, tel:, mailto:)
+  link_text   text,                              -- optional label for the link
+  published   boolean not null default true,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz
+);
+
+alter table public.announcements enable row level security;
+
+drop policy if exists "public read published announcements" on public.announcements;
+create policy "public read published announcements"
+  on public.announcements for select
+  to anon, authenticated
+  using (published = true);
+
+drop policy if exists "staff full access announcements" on public.announcements;
+create policy "staff full access announcements"
+  on public.announcements for all
+  to authenticated
+  using (true) with check (true);
+
+-- Move your 3 existing hard-coded cards into the table (only if it is empty)
+insert into public.announcements (label, title, body, category, link_url, link_text, created_at)
+select v.* from (values
+  ('Latest Program',
+   'Salamat, Mr. Streethoops at Hoop Jeep!',
+   'Taos-pusong pasasalamat kina MR. STREETHOOPS — Vontoi SanPedro at HOOP JEEP sa pagpunta at pagbibigay saya sa mga kabataan ng Nascor! Patuloy ang pagsuporta ng ating Punong Barangay Willy Flores sa ganitong mga programa at aktibidad para sa ating kabataan upang mas mabigyan natin sila ng pagkakataong mahasa ang kanilang talento at ma-enjoy ang larangan ng Sports.',
+   'Sports & Kabataan',
+   'https://www.facebook.com/profile.php?id=100092404114029',
+   'Facebook post',
+   now()),
+  ('Paalala',
+   'Oras ng Tanggapan',
+   'Bukas ang Barangay Hall tuwing Lunes hanggang Biyernes, **7:00 AM – 4:00 PM**, sa 700 Dr. Natividad Street, Ibayo-Tipas, Taguig City. Naka-standby ang BPSO 24/7 para sa mga emergency concern.',
+   'Barangay Hall',
+   null, null,
+   now() - interval '1 second'),
+  ('Kontak',
+   'Makipag-ugnayan sa Amin',
+   'Para sa mga katanungan at konsernong pambarangay, tumawag sa **(02) 8525-9348** o **0918 962 0231**, o mag-email sa **brgy.ibayotipas03@gmail.com**.',
+   'Medic 24/7: 0962 743 8455',
+   'tel:09189620231',
+   'Tawagan',
+   now() - interval '2 seconds')
+) as v(label, title, body, category, link_url, link_text, created_at)
+where not exists (select 1 from public.announcements);
