@@ -57,6 +57,13 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('ibayo-theme') === 'dark' ? 'dark' : 'light';
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
 </head>
 <body class="min-h-full flex flex-col antialiased text-foreground bg-background">
 
@@ -107,13 +114,13 @@
       </a>
     </div>
 
-    <!-- Header Actions: Online Request Only -->
-    <div class="flex items-center shrink-0 ml-2">
-      <button class="open-request-modal rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-2.5 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1">
-        <i data-lucide="file-plus" class="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0"></i>
-        <span>Online Request</span>
-      </button>
-    </div>
+      <!-- Header Actions: Online Request Only -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button class="open-request-modal rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-4 py-2 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
+          <i data-lucide="file-plus" class="w-3.5 h-3.5 shrink-0"></i>
+          <span>Online Request</span>
+        </button>
+      </div>
 
   </div>
 </header>
@@ -132,7 +139,7 @@
       <i data-lucide="search" class="w-3.5 h-3.5 text-primary"></i>
       <span>Tracker</span>
     </a>
-    <a href="index.html#announcements" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+    <a href="announcements.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
       <i data-lucide="megaphone" class="w-3.5 h-3.5 text-primary"></i>
       <span>Announcements</span>
     </a>
@@ -167,11 +174,11 @@
     </div>
 
     <nav class="mt-4 space-y-1 overflow-y-auto flex-1 text-xs font-semibold">
-      <a href="index.html#home" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+      <a href="index.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="home" class="w-4 h-4 text-primary"></i>
         <span>Home</span>
       </a>
-      <a href="index.html#announcements" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+      <a href="announcements.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="megaphone" class="w-4 h-4 text-primary"></i>
         <span>Announcements</span>
       </a>
@@ -184,21 +191,21 @@
         <span class="flex-1">Barangay Services</span>
         <span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full font-bold">Docs</span>
       </a>
-      <a href="tracker.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground bg-sun/10">
+      <a href="tracker.html" class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground bg-sun/10">
         <i data-lucide="search-check" class="w-4 h-4 text-sun-foreground"></i>
         <span class="flex-1">Live Status Tracker</span>
         <span class="text-[10px] bg-sun text-sun-foreground px-2 py-0.5 rounded-full font-bold">Live</span>
       </a>
-      <a href="health-center.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+      <a href="health-center.html" class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="heart-pulse" class="w-4 h-4 text-primary"></i>
         <span>Health Center</span>
       </a>
-      <a href="reklamo.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold">
+      <a href="reklamo.html" class="nav-item mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold">
         <i data-lucide="alert-triangle" class="w-4 h-4"></i>
         <span class="flex-1">e-Reklamo Desk</span>
         <span class="text-[10px] bg-white text-primary px-2 py-0.5 rounded-full font-bold">Active</span>
       </a>
-      <a href="index.html#contact" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+      <a href="contact.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="phone-call" class="w-4 h-4 text-primary"></i>
         <span>Contact & Hotlines</span>
       </a>
@@ -228,7 +235,7 @@
       <nav class="space-y-1.5 flex-1">
         
         <!-- Home -->
-        <a href="index.html#home" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="index.html#home" class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="home" class="w-4 h-4"></i>
           </div>
@@ -239,7 +246,7 @@
         </a>
 
         <!-- Announcements -->
-        <a href="index.html#announcements" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="announcements.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="megaphone" class="w-4 h-4"></i>
           </div>
@@ -249,19 +256,8 @@
           </div>
         </a>
 
-        <!-- About -->
-        <a href="about.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
-          <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
-            <i data-lucide="landmark" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <span class="block font-bold">About</span>
-            <span class="block text-[10px] text-muted-foreground">Tungkol sa Pamunuan</span>
-          </div>
-        </a>
-
         <!-- Barangay Services -->
-        <a href="services.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="services.html" class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="file-check-2" class="w-4 h-4"></i>
           </div>
@@ -275,7 +271,7 @@
         </a>
 
         <!-- Live Verification & Status -->
-        <a href="tracker.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="tracker.html" class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="search-check" class="w-4 h-4"></i>
           </div>
@@ -289,7 +285,7 @@
         </a>
 
         <!-- Health Center (Active) -->
-        <a href="health-center.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-primary text-primary-foreground shadow-sm transition-colors group">
+        <a href="health-center.html" class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-primary text-primary-foreground shadow-sm group">
           <div class="size-8 rounded-lg bg-white/20 text-white flex items-center justify-center transition-colors">
             <i data-lucide="heart-pulse" class="w-4 h-4"></i>
           </div>
@@ -303,7 +299,7 @@
         </a>
 
         <!-- e-Reklamo Desk -->
-        <a href="reklamo.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="reklamo.html" class="nav-item sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="alert-triangle" class="w-4 h-4"></i>
           </div>
@@ -313,14 +309,26 @@
           </div>
         </a>
 
+
         <!-- Contact & Hotlines -->
-        <a href="index.html#contact" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <a href="contact.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="phone-call" class="w-4 h-4"></i>
           </div>
           <div>
             <span class="block font-bold">Contact & Hotlines</span>
             <span class="block text-[10px] text-muted-foreground">Emergency at Opisina</span>
+          </div>
+        </a>
+
+         <!-- About -->
+        <a href="about.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+          <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
+            <i data-lucide="landmark" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <span class="block font-bold">About</span>
+            <span class="block text-[10px] text-muted-foreground">Tungkol sa Pamunuan</span>
           </div>
         </a>
 
@@ -370,88 +378,134 @@
         </div>
 
           
-       <!-- Lingguhang Iskedyul Cards (Naliitan at Naka-center sa Ibaba) -->
+   <!-- Lingguhang Iskedyul Cards (May Announcement Banner sa Itaas) -->
         <div class="space-y-5">
-          <!-- Unang Linya: 3 Cards sa Itaas -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            
-            <!-- Lunes -->
-            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col justify-between min-h-[160px] hover:shadow-md transition-shadow">
-              <div class="space-y-2">
-                <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                  Lunes
-                </span>
-                <h3 class="font-bold text-foreground text-base">
-                  Prenatal &amp; Maternal
-                </h3>
-                <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Checkup para sa mga buntis at folic acid.
-                </p>
-              </div>
-            </div>
 
-            <!-- Martes -->
-            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col justify-between min-h-[160px] hover:shadow-md transition-shadow">
-              <div class="space-y-2">
-                <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                  Martes
-                </span>
-                <h3 class="font-bold text-foreground text-base">
-                  EPI Bakuna ng Sanggol
-                </h3>
-                <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  BCG, Polio, Pentavalent, Measles.
-                </p>
-              </div>
+          <!-- Announcement Banner: ALL SERVICES ARE FREE! -->
+          <div class="bg-emerald-50/90 border border-emerald-300/80 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 shadow-sm">
+            <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
-
-            <!-- Miyerkules -->
-            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col justify-between min-h-[160px] hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
-              <div class="space-y-2">
-                <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                  Miyerkules
-                </span>
-                <h3 class="font-bold text-foreground text-base">
-                  Senior Citizens Care
-                </h3>
-                <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Blood pressure, blood sugar, gamot.
-                </p>
-              </div>
+            <div class="space-y-1">
+              <h3 class="font-bold text-emerald-950 text-sm sm:text-base">
+                ALL SERVICES ARE FREE!
+              </h3>
+              <p class="text-xs sm:text-sm text-emerald-900/90 leading-relaxed">
+                Lahat ng serbisyo sa Barangay Ibayo-Tipas Health Center ay <strong class="font-semibold">LIBRE</strong> para sa mga residente. Para sa mga katanungan o pag-inquire, maaaring tumawag sa <strong class="font-semibold">09617340886</strong>.
+              </p>
             </div>
-
           </div>
 
-          <!-- Ikalawang Linya: 2 Cards na Naka-gitna -->
-          <div class="flex flex-col sm:flex-row justify-center gap-5">
-            
-            <!-- Huwebes -->
-            <div class="w-full lg:w-[calc(33.333%-14px)] bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col justify-between min-h-[160px] hover:shadow-md transition-shadow">
-              <div class="space-y-2">
-                <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                  Huwebes
-                </span>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <!-- Medical Consultation -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
                 <h3 class="font-bold text-foreground text-base">
-                  Dental Health
+                  Medical Consultation
                 </h3>
-                <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Libreng bunot ng ngipin at checkup.
-                </p>
+                <div class="text-xs text-muted-foreground leading-relaxed space-y-0.5">
+                  <span class="block whitespace-nowrap">Lunes, Martes, Biyernes: 7:00 AM - 4:00 PM</span>
+                  <span class="block whitespace-nowrap">Miyerkules, Huwebes: 1:00 PM - 4:00 PM</span>
+                </div>
               </div>
             </div>
 
-            <!-- Biyernes -->
-            <div class="w-full lg:w-[calc(33.333%-14px)] bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col justify-between min-h-[160px] hover:shadow-md transition-shadow">
-              <div class="space-y-2">
-                <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                  Biyernes
-                </span>
+            <!-- Immunization -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
                 <h3 class="font-bold text-foreground text-base">
-                  Pangkalahatang Konsultasyon
+                  Immunization
                 </h3>
-                <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  TB-DOTS at regular checkup.
-                </p>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Miyerkules: 7:00 AM - 12:00 NN</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pre Natal -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
+                <h3 class="font-bold text-foreground text-base">
+                  Pre Natal
+                </h3>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Huwebes: 7:00 AM - 12:00 NN</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Family Planning -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
+                <h3 class="font-bold text-foreground text-base">
+                  Family Planning
+                </h3>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Lunes - Biyernes: 1:00 PM - 4:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breast and Cervical Screening -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
+                <h3 class="font-bold text-foreground text-base">
+                  Breast and Cervical Screening
+                </h3>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Lunes at Biyernes: 7:00 AM - 4:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dental Services -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
+                <h3 class="font-bold text-foreground text-base">
+                  Dental Services
+                </h3>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Lunes - Biyernes: 7:00 AM - 4:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nutrition -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
+                <h3 class="font-bold text-foreground text-base">
+                  Nutrition
+                </h3>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Lunes - Biyernes: 7:00 AM - 4:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TB-DOTS -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
+                <h3 class="font-bold text-foreground text-base">
+                  TB-DOTS
+                </h3>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Lunes - Biyernes: 7:00 AM - 4:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Animal Bite Center -->
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-border shadow-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:shadow-md transition-shadow">
+              <div class="space-y-2 w-full">
+                <h3 class="font-bold text-foreground text-base">
+                  Animal Bite Center
+                </h3>
+                <div class="text-xs text-muted-foreground leading-relaxed">
+                  <span class="block whitespace-nowrap">Lunes - Biyernes: 7:00 AM - 4:00 PM</span>
+                </div>
               </div>
             </div>
 
@@ -535,8 +589,8 @@
               <input type="text" id="applicant-name" required placeholder="Hal. Maria Santos Cruz" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
             </div>
             <div>
-              <label class="block text-xs font-bold text-foreground mb-1">Mobile / Contact Number *</label>
-              <input type="tel" id="applicant-phone" required placeholder="09XXXXXXXXX" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+              <label class="block text-xs font-bold text-foreground mb-1">Mobile / Contact Number (12 digits) *</label>
+              <input type="tel" id="applicant-phone" required inputmode="numeric" pattern="[0-9]{12}" minlength="12" maxlength="12" title="Enter exactly 12 digits." placeholder="12 digits" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
             </div>
           </div>
 
@@ -546,8 +600,18 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
-            <input type="text" id="applicant-purpose" required placeholder="Hal. Para sa Local Employment, Postal ID, o School" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            <label for="applicant-purpose" class="block text-xs font-bold text-foreground mb-1">Layunin o Dahilan ng Pagkuha (Purpose) *</label>
+            <select id="applicant-purpose" required class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+              <option value="" selected disabled>Pumili ng layunin</option>
+              <option value="Local Employment">Local Employment</option>
+              <option value="Postal ID">Postal ID</option>
+              <option value="School Requirement">School Requirement</option>
+              <option value="Others">Others</option>
+            </select>
+            <div id="applicant-purpose-other-wrap" class="hidden mt-2">
+              <label for="applicant-purpose-other" class="block text-xs font-bold text-foreground mb-1">Ilagay ang ibang layunin *</label>
+              <input type="text" id="applicant-purpose-other" placeholder="Ilagay ang layunin" class="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-primary focus:outline-none">
+            </div>
           </div>
 
           <div>
