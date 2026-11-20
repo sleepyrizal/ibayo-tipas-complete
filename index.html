@@ -131,7 +131,7 @@
 
   <!-- ================= MOBILE NAVIGATION CHIP BAR ================= -->
   <div class="md:hidden overflow-x-auto py-2 px-3 bg-secondary/50 border-b border-border flex items-center gap-2 text-xs font-semibold whitespace-nowrap">
-    <a href="index.html#home" class="px-3 py-1.5 rounded-full bg-primary text-primary-foreground shadow-xs flex items-center gap-1">
+    <a href="index.html" class="px-3 py-1.5 rounded-full bg-primary text-primary-foreground shadow-xs flex items-center gap-1">
       <i data-lucide="home" class="w-3.5 h-3.5"></i>
       <span>Home</span>
     </a>
@@ -146,6 +146,10 @@
     <a href="announcements.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
       <i data-lucide="megaphone" class="w-3.5 h-3.5 text-primary"></i>
       <span>Announcements</span>
+    </a>
+    <a href="contact.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+      <i data-lucide="phone-call" class="w-3.5 h-3.5 text-primary"></i>
+      <span>Contact</span>
     </a>
     <a href="about.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
       <i data-lucide="landmark" class="w-3.5 h-3.5 text-primary"></i>
@@ -179,17 +183,13 @@
 
     <!-- Mobile Drawer Links -->
     <nav class="mt-4 space-y-1 overflow-y-auto flex-1 text-xs font-semibold">
-      <a href="index.html#home" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold">
+      <a href="index.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold">
         <i data-lucide="home" class="w-4 h-4"></i>
         <span>Home</span>
       </a>
       <a href="announcements.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="megaphone" class="w-4 h-4 text-primary"></i>
         <span>Announcements</span>
-      </a>
-      <a href="about.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
-        <i data-lucide="landmark" class="w-4 h-4 text-primary"></i>
-        <span>About</span>
       </a>
       <a href="services.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground bg-primary/5">
         <i data-lucide="file-check-2" class="w-4 h-4 text-primary"></i>
@@ -209,9 +209,13 @@
         <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
         <span>e-Reklamo Desk</span>
       </a>
-      <a href="index.html#contact" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+      <a href="contact.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
         <i data-lucide="phone-call" class="w-4 h-4 text-primary"></i>
         <span>Contact & Hotlines</span>
+      </a>
+      <a href="about.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-secondary text-foreground">
+        <i data-lucide="landmark" class="w-4 h-4 text-primary"></i>
+        <span>About</span>
       </a>
     </nav>
 
@@ -240,7 +244,7 @@
       <nav class="space-y-1.5 flex-1">
 
         <!-- Home (Active on Landing Page) -->
-        <a href="index.html#home" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-primary text-primary-foreground shadow-sm transition-colors group">
+        <a href="index.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-primary text-primary-foreground shadow-sm transition-colors group">
           <div class="size-8 rounded-lg bg-white/20 text-white flex items-center justify-center transition-colors">
             <i data-lucide="home" class="w-4 h-4"></i>
           </div>
@@ -261,17 +265,6 @@
           </div>
         </a>
 
-        <!-- About -->
-        <a href="about.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
-          <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
-            <i data-lucide="landmark" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <span class="block font-bold">About</span>
-            <span class="block text-[10px] text-muted-foreground">Tungkol sa Pamunuan</span>
-          </div>
-        </a>
-
         <!-- Barangay Services (Dedicated Page Link) -->
         <a href="services.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
@@ -287,18 +280,18 @@
         </a>
 
         <!-- Live Verification & Status Sidebar Link -->
-<a href="tracker.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-emerald-800/10 hover:text-emerald-900 transition-colors group">
-  <div class="size-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center transition-colors">
-    <i data-lucide="search-check" class="w-4 h-4"></i>
-  </div>
-  <div class="flex-1">
-    <div class="flex items-center justify-between">
-      <span class="block font-bold">Live Status & Tracker</span>
-      <span class="text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">Live</span>
-    </div>
-    <span class="block text-[10px] text-muted-foreground">Subaybayan ang Aplikasyon</span>
-  </div>
-</a>
+        <a href="tracker.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-emerald-800/10 hover:text-emerald-900 transition-colors group">
+          <div class="size-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center transition-colors">
+            <i data-lucide="search-check" class="w-4 h-4"></i>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between">
+              <span class="block font-bold">Live Status & Tracker</span>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">Live</span>
+            </div>
+            <span class="block text-[10px] text-muted-foreground">Subaybayan ang Aplikasyon</span>
+          </div>
+        </a>
 
         <!-- Health Center -->
         <a href="health-center.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
@@ -322,14 +315,25 @@
           </div>
         </a>
 
-        <!-- Contact & Hotlines -->
-        <a href="index.html#contact" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+        <!-- Contact & Hotlines (Dedicated Page Link) -->
+        <a href="contact.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
           <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
             <i data-lucide="phone-call" class="w-4 h-4"></i>
           </div>
           <div>
             <span class="block font-bold">Contact & Hotlines</span>
             <span class="block text-[10px] text-muted-foreground">Emergency at Opisina</span>
+          </div>
+        </a>
+
+        <!-- About -->
+        <a href="about.html" class="sidebar-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors group">
+          <div class="size-8 rounded-lg bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground flex items-center justify-center transition-colors">
+            <i data-lucide="landmark" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <span class="block font-bold">About</span>
+            <span class="block text-[10px] text-muted-foreground">Tungkol sa Pamunuan</span>
           </div>
         </a>
 
@@ -493,80 +497,39 @@
 
       </main>
 
-      <!-- ================= CONTACT & FOOTER ================= -->
-      <footer id="contact" class="bg-leaf text-primary-foreground border-t border-leaf-light mt-auto">
+      <!-- ================= SLIM FOOTER (full contact info now on contact.html) ================= -->
+      <footer class="bg-leaf text-primary-foreground border-t border-leaf-light mt-auto">
 
-        <div class="px-4 sm:px-8 py-14">
+        <div class="px-4 sm:px-8 py-10">
 
-          <div class="mb-10 max-w-xl">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="assets/logo.png" alt="Barangay Ibayo-Tipas Official Seal" class="size-11 rounded-full object-contain bg-white p-0.5 shadow-md">
-              <span class="text-xl font-black font-heading tracking-tight">Barangay Ibayo-Tipas</span>
-            </div>
-            <p class="text-xs sm:text-sm text-primary-foreground/80 leading-relaxed">
-              Malinis, ligtas, at maunlad na barangay — para sa bawat residente ng Ibayo-Tipas, Taguig City.
-            </p>
-          </div>
-
-          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 border-t border-primary-foreground/15 pt-8 text-sm">
-
-            <!-- Col 1: Contact info -->
-            <div class="space-y-3">
-              <h4 class="font-bold text-sun uppercase tracking-wider text-xs font-heading">Contact Us</h4>
-              <ul class="space-y-2 text-primary-foreground/85 text-xs">
-                <li class="flex items-start gap-2">
-                  <i data-lucide="map-pin" class="size-4 text-sun shrink-0 mt-0.5"></i>
-                  <span>700 Dr. Natividad Street, Barangay Ibayo-Tipas, Taguig City</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i data-lucide="phone" class="size-4 text-sun shrink-0"></i>
-                  <a href="tel:+63285259348" class="hover:text-sun">(02) 8525-9348</a>
-                  <span>·</span>
-                  <a href="tel:+639189620231" class="hover:text-sun">0918 962 0231</a>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i data-lucide="mail" class="size-4 text-sun shrink-0"></i>
-                  <a href="mailto:brgy.ibayotipas03@gmail.com" class="hover:text-sun">brgy.ibayotipas03@gmail.com</a>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i data-lucide="clock" class="size-4 text-sun shrink-0"></i>
-                  <span>Monday – Friday, 7:00 AM – 4:00 PM</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Col 2: Emergency Hotlines -->
-            <div class="space-y-3">
-              <h4 class="font-bold text-sun uppercase tracking-wider text-xs font-heading">Emergency Hotlines</h4>
-              <ul class="space-y-1.5 text-xs text-primary-foreground/85">
-                <li>Medic & Ambulance 24/7: <a href="tel:09627438455" class="text-sun font-bold">0962 743 8455</a></li>
-                <li>Barangay Hall / BPSO: <a href="tel:09189620231" class="text-white font-bold">0918 962 0231</a></li>
-                <li>Health Center: <a href="tel:09617340886" class="text-white font-bold">0961 734 0886</a></li>
-                <li>Taguig Command Center: <span class="text-white font-bold">(02) 8789-3200</span></li>
-              </ul>
-            </div>
-
-            <!-- Col 3: Follow Us & Admin link -->
-            <div class="space-y-3">
-              <h4 class="font-bold text-sun uppercase tracking-wider text-xs font-heading">Links & Quick Access</h4>
-              <p class="text-xs text-primary-foreground/80">
-                Para sa mga anunsyo at opisyal na ulat, bisitahin ang aming Facebook page.
-              </p>
-              <div class="flex flex-col gap-2 pt-1">
-                <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-4 py-2 text-xs font-semibold hover:bg-white/10 transition-colors w-fit">
-                  <i data-lucide="facebook" class="size-4"></i>
-                  <span>Barangay Ibayo-Tipas on Facebook</span>
-                </a>
-                <a href="admin.html" class="inline-flex items-center gap-1.5 text-xs text-sun hover:underline font-bold pt-1">
-                  <i data-lucide="shield-check" class="size-3.5"></i>
-                  <span>Staff & Admin Portal (Login)</span>
-                </a>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div class="max-w-xl">
+              <div class="flex items-center gap-3 mb-3">
+                <img src="assets/logo.png" alt="Barangay Ibayo-Tipas Official Seal" class="size-11 rounded-full object-contain bg-white p-0.5 shadow-md">
+                <span class="text-xl font-black font-heading tracking-tight">Barangay Ibayo-Tipas</span>
               </div>
+              <p class="text-xs sm:text-sm text-primary-foreground/80 leading-relaxed">
+                Malinis, ligtas, at maunlad na barangay — para sa bawat residente ng Ibayo-Tipas, Taguig City.
+              </p>
             </div>
 
+            <div class="flex flex-col gap-2 sm:items-end">
+              <a href="contact.html" class="inline-flex items-center gap-2 rounded-full bg-sun px-5 py-2.5 text-xs font-bold text-sun-foreground shadow-md transition-transform hover:scale-105 w-fit">
+                <i data-lucide="phone-call" class="size-4"></i>
+                <span>Contact & Hotlines</span>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-4 py-2 text-xs font-semibold hover:bg-white/10 transition-colors w-fit">
+                <i data-lucide="facebook" class="size-4"></i>
+                <span>Barangay Ibayo-Tipas on Facebook</span>
+              </a>
+              <a href="admin.html" class="inline-flex items-center gap-1.5 text-xs text-sun hover:underline font-bold pt-1">
+                <i data-lucide="shield-check" class="size-3.5"></i>
+                <span>Staff & Admin Portal (Login)</span>
+              </a>
+            </div>
           </div>
 
-          <div class="mt-12 pt-6 border-t border-primary-foreground/15 text-center text-xs text-primary-foreground/60 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div class="mt-10 pt-6 border-t border-primary-foreground/15 text-center text-xs text-primary-foreground/60 flex flex-col sm:flex-row items-center justify-between gap-2">
             <div>
               © 2026 Barangay Ibayo-Tipas, Taguig City. Lahat ng Karapatan ay Nakalaan.
             </div>
@@ -578,7 +541,6 @@
         </div>
 
       </footer>
-
     </div>
 
   </div>
