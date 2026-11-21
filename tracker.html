@@ -299,10 +299,10 @@
           </div>
           <div class="flex-1">
             <div class="flex items-center justify-between">
-              <span class="block font-bold">Live Status & Tracker</span>
-              <span class="text-[9px] bg-emerald-800 text-emerald-100 px-1.5 py-0.5 rounded font-bold">Active</span>
+              <span class="block">Live Status & Tracker</span>
+              <span class="text-[9px] bg-white text-primary px-1.5 py-0.5 rounded font-bold">Active</span>
             </div>
-            <span class="block text-[10px] text-emerald-200/80">Subaybayan ang Aplikasyon</span>
+            <span class="block text-[10px] text-primary-foreground/80">Subaybayan ang Aplikasyon</span>
           </div>
         </a>
 
@@ -379,26 +379,19 @@
 
     </aside>
 
-    <!-- ================= MAIN CONTENT AREA ================= -->
+   <!-- ================= MAIN CONTENT AREA ================= -->
     <div class="flex-1 min-w-0 flex flex-col">
-      <main class="max-w-4xl w-full mx-auto px-4 py-3 space-y-3">
-
+      <main class="flex-1 p-4 sm:p-8 lg:p-10 space-y-8">
+        
         <!-- Page Header Banner -->
         <div class="rounded-3xl bg-leaf text-primary-foreground p-6 sm:p-10 relative overflow-hidden shadow-lg">
-          <img src="assets/hero-bg.png" alt="Background"
-            class="absolute inset-0 h-full w-full object-cover opacity-15 filter blur-xs">
+          <img src="assets/hero-bg.png" alt="Background" class="absolute inset-0 h-full w-full object-cover opacity-15 filter blur-xs">
           <div class="relative z-10 max-w-2xl space-y-3">
-            <div
-              class="inline-flex items-center gap-2 rounded-full bg-sun px-3.5 py-1 text-xs font-bold text-sun-foreground">
-              <i data-lucide="search-check" class="w-3.5 h-3.5"></i>
-              <span>Live Verification & Status</span>
-            </div>
             <h1 class="text-3xl sm:text-4xl font-black font-heading tracking-tight">
-              Subaybayan ang Iyong Dokumento
+              Live Status and Tracker
             </h1>
             <p class="text-sm sm:text-base text-primary-foreground/90 leading-relaxed">
-              Ilagay ang inyong ibinigay na Tracking Reference Code upang malaman ang progreso ng inyong hininging
-              dokumento sa Barangay Hall.
+              Enter your provided Tracking Reference Code to track the progress of your requested document at the Barangay Hall.
             </p>
           </div>
         </div>
@@ -802,6 +795,33 @@
             : ''
         );
       });
+    })();
+  </script>
+
+  <!-- Phone number rules: digits only, exactly 11 -->
+  <script>
+    (function () {
+      var phone = document.getElementById('applicant-phone');
+      if (!phone) return;
+
+      function check() {
+        // Remove anything that is not a digit (letters, spaces, dashes, +) and cap at 11
+        var digits = phone.value.replace(/\D/g, '').slice(0, 11);
+        if (phone.value !== digits) phone.value = digits;
+        phone.setCustomValidity(
+          digits.length === 0 || digits.length === 11
+            ? ''
+            : 'Ilagay ang eksaktong 11 digits (' + digits.length + ' pa lang).'
+        );
+      }
+
+      phone.addEventListener('input', check);
+      phone.addEventListener('paste', function () { setTimeout(check, 0); });
+
+      // Clear any leftover error message when the form is reset
+      if (phone.form) {
+        phone.form.addEventListener('reset', function () { phone.setCustomValidity(''); });
+      }
     })();
   </script>
 
