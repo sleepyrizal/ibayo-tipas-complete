@@ -79,10 +79,10 @@
 <body class="min-h-full flex flex-col antialiased text-foreground bg-background">
 
   <!-- ================= TOP NOTICE BAR ================= -->
-  <div class="bg-leaf text-primary-foreground text-xs py-2 px-4 border-b border-leaf-light/50">
-    <div class="mx-auto flex max-w-7xl items-center justify-between">
-      <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-1.5 font-bold text-sun">
+  <div class="bg-leaf text-primary-foreground text-[10px] sm:text-xs py-1.5 px-2 sm:px-4 border-b border-leaf-light/50">
+    <div class="mx-auto flex max-w-7xl items-center justify-between whitespace-nowrap">
+      <div class="flex items-center gap-1 sm:gap-2">
+        <span class="inline-flex items-center gap-1 font-bold text-sun shrink-0">
           <i data-lucide="clock" class="w-3.5 h-3.5"></i>
           <span>Oras ng Tanggapan:</span>
         </span>
@@ -102,42 +102,39 @@
     </div>
   </div>
 
-  <!-- ================= MAIN HEADER / NAVBAR ================= -->
-  <header class="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-3 sm:px-6 py-3">
+ <!-- ================= MAIN HEADER / NAVBAR ================= -->
+<header class="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-2.5 sm:px-6 py-2 sm:py-3">
 
-      <!-- Mobile Sidebar Toggle & Branding -->
-      <div class="flex items-center gap-2.5">
-        <button id="mobile-sidebar-toggle" class="md:hidden p-2 rounded-xl border border-border text-foreground hover:bg-secondary transition-colors" aria-label="Buksan ang Menu">
-          <i data-lucide="menu" class="w-5 h-5"></i>
-        </button>
+    <!-- Mobile Sidebar Toggle & Branding -->
+    <div class="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
+      <button id="mobile-sidebar-toggle" class="md:hidden p-1.5 rounded-lg border border-border text-foreground hover:bg-secondary transition-colors shrink-0" aria-label="Buksan ang Menu">
+        <i data-lucide="menu" class="w-4 h-4"></i>
+      </button>
 
-        <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-          <img src="assets/logo.png" alt="Barangay Ibayo-Tipas Official Seal" class="size-10 sm:size-11 rounded-full object-contain shadow-sm border border-border group-hover:scale-105 transition-transform bg-white p-0.5">
-          <span class="leading-tight">
-            <span class="block font-bold text-foreground font-heading text-base sm:text-lg group-hover:text-primary transition-colors tracking-tight">
-              Barangay Ibayo-Tipas
-            </span>
-            <span class="block text-[11px] sm:text-xs text-muted-foreground font-medium">
-              Taguig City · Tuloy ang Serbisyo!
-            </span>
+      <a href="index.html" class="flex items-center gap-1.5 sm:gap-3 group min-w-0">
+        <img src="assets/logo.png" alt="Barangay Ibayo-Tipas Official Seal" class="size-8 sm:size-11 rounded-full object-contain shadow-sm border border-border group-hover:scale-105 transition-transform bg-white p-0.5 shrink-0">
+        <span class="leading-tight truncate">
+          <span class="block font-bold text-foreground font-heading text-xs sm:text-lg group-hover:text-primary transition-colors tracking-tight truncate">
+            Barangay Ibayo-Tipas
           </span>
-        </a>
-      </div>
+          <span class="block text-[10px] sm:text-xs text-muted-foreground font-medium truncate">
+            Taguig City · Tuloy ang Serbisyo!
+          </span>
+        </span>
+      </a>
+    </div>
 
       <!-- Header Actions: Online Request Only -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <button id="theme-toggle" type="button" aria-label="Lumipat sa dark mode" aria-pressed="false" title="Lumipat sa dark mode" class="rounded-full border border-border bg-card p-2.5 text-foreground transition-colors hover:bg-secondary">
-          <i data-lucide="moon" class="h-4 w-4"></i>
-        </button>
         <button class="open-request-modal rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-4 py-2 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
           <i data-lucide="file-plus" class="w-3.5 h-3.5 shrink-0"></i>
           <span>Online Request</span>
         </button>
       </div>
 
-    </div>
-  </header>
+  </div>
+</header>
 
   <!-- ================= MOBILE NAVIGATION CHIP BAR ================= -->
   <div class="md:hidden overflow-x-auto py-2 px-3 bg-secondary/50 border-b border-border flex items-center gap-2 text-xs font-semibold whitespace-nowrap">
@@ -408,10 +405,12 @@
                     <i data-lucide="file-check-2" class="size-4"></i>
                     <span>Tingnan ang Serbisyo</span>
                   </a>
-                  <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/40 px-4 py-3 text-xs sm:text-sm font-semibold text-primary-foreground transition-colors hover:bg-white/10">
-                    <i data-lucide="facebook" class="size-4"></i>
-                    <span>Facebook Page</span>
-                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-primary-foreground/40 px-3.5 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm font-semibold text-primary-foreground transition-colors hover:bg-white/10">
+    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current shrink-0" viewBox="0 0 24 24">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+    <span>Facebook Page</span>
+  </a>
                 </div>
               </div>
 
@@ -446,6 +445,10 @@
 
           </div>
         </section>
+
+        <!-- (Announcements section removed — now on announcements.html) -->
+
+        <!-- (About section removed — now on about.html) -->
 
         <!-- ================= MAP / HANAPIN KAMI ================= -->
         <section id="map" class="px-4 sm:px-8 py-10 sm:py-14 bg-background">
@@ -501,7 +504,11 @@
 
           </div>
         </section>
+
       </main>
+
+        
+
 
       <!-- ================= SLIM FOOTER (full contact info now on contact.html) ================= -->
       <footer class="bg-leaf text-primary-foreground border-t border-leaf-light mt-auto">
@@ -519,21 +526,61 @@
               </p>
             </div>
 
-            <div class="flex flex-col gap-2 sm:items-end">
-              <a href="contact.html" class="inline-flex items-center gap-2 rounded-full bg-sun px-5 py-2.5 text-xs font-bold text-sun-foreground shadow-md transition-transform hover:scale-105 w-fit">
-                <i data-lucide="phone-call" class="size-4"></i>
-                <span>Contact & Hotlines</span>
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-4 py-2 text-xs font-semibold hover:bg-white/10 transition-colors w-fit">
-                <i data-lucide="facebook" class="size-4"></i>
-                <span>Barangay Ibayo-Tipas on Facebook</span>
-              </a>
-              <a href="admin.html" class="inline-flex items-center gap-1.5 text-xs text-sun hover:underline font-bold pt-1">
-                <i data-lucide="shield-check" class="size-3.5"></i>
-                <span>Staff & Admin Portal (Login)</span>
-              </a>
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 border-t border-primary-foreground/15 pt-8 text-sm">
+
+            <!-- Col 1: Contact info -->
+            <div class="space-y-3">
+              <h4 class="font-bold text-sun uppercase tracking-wider text-xs font-heading">Contact Us</h4>
+              <ul class="space-y-2 text-primary-foreground/85 text-xs">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="map-pin" class="size-4 text-sun shrink-0 mt-0.5"></i>
+                  <span>700 Dr. Natividad Street, Barangay Ibayo-Tipas, Taguig City</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="phone" class="size-4 text-sun shrink-0"></i>
+                  <a href="tel:+63285259348" class="hover:text-sun">(02) 8525-9348</a>
+                  <span>·</span>
+                  <a href="tel:+639189620231" class="hover:text-sun">0918 962 0231</a>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="mail" class="size-4 text-sun shrink-0"></i>
+                  <a href="mailto:brgy.ibayotipas03@gmail.com" class="hover:text-sun">brgy.ibayotipas03@gmail.com</a>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="clock" class="size-4 text-sun shrink-0"></i>
+                  <span>Monday – Friday, 7:00 AM – 4:00 PM</span>
+                </li>
+              </ul>
             </div>
-          </div>
+
+            <!-- Col 2: Emergency Hotlines -->
+            <div class="space-y-3">
+              <h4 class="font-bold text-sun uppercase tracking-wider text-xs font-heading">Emergency Hotlines</h4>
+              <ul class="space-y-1.5 text-xs text-primary-foreground/85">
+                <li>Medic & Ambulance 24/7: <a href="tel:09627438455" class="text-sun font-bold">0962 743 8455</a></li>
+                <li>Barangay Hall / BPSO: <a href="tel:09189620231" class="text-white font-bold">0918 962 0231</a></li>
+                <li>Health Center: <a href="tel:09617340886" class="text-white font-bold">0961 734 0886</a></li>
+                <li>Taguig Command Center: <span class="text-white font-bold">(02) 8789-3200</span></li>
+              </ul>
+            </div>
+
+            <!-- Col 3: Follow Us & Admin link -->
+            <div class="space-y-3">
+              <h4 class="font-bold text-sun uppercase tracking-wider text-xs font-heading">Links & Quick Access</h4>
+              <p class="text-xs text-primary-foreground/80">
+                Para sa mga anunsyo at opisyal na ulat, bisitahin ang aming Facebook page.
+              </p>
+              <div class="flex flex-col gap-2 pt-1">
+                <a href="https://www.facebook.com/profile.php?id=100092404114029" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-4 py-2 text-xs font-semibold hover:bg-white/10 transition-colors w-fit">
+                  <i data-lucide="facebook" class="size-4"></i>
+                  <span>Barangay Ibayo-Tipas on Facebook</span>
+                </a>
+                <a href="admin.html" class="inline-flex items-center gap-1.5 text-xs text-sun hover:underline font-bold pt-1">
+                  <i data-lucide="shield-check" class="size-3.5"></i>
+                  <span>Staff & Admin Portal (Login)</span>
+                </a>
+              </div>
+            </div>
 
           <div class="mt-10 pt-6 border-t border-primary-foreground/15 text-center text-xs text-primary-foreground/60 flex flex-col sm:flex-row items-center justify-between gap-2">
             <div>

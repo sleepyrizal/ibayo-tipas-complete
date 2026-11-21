@@ -68,10 +68,10 @@
 <body class="min-h-full flex flex-col antialiased text-foreground bg-background">
 
   <!-- ================= TOP NOTICE BAR ================= -->
-  <div class="bg-leaf text-primary-foreground text-xs py-2 px-4 border-b border-leaf-light/50">
-    <div class="mx-auto flex max-w-7xl items-center justify-between">
-      <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-1.5 font-bold text-sun">
+  <div class="bg-leaf text-primary-foreground text-[10px] sm:text-xs py-1.5 px-2 sm:px-4 border-b border-leaf-light/50">
+    <div class="mx-auto flex max-w-7xl items-center justify-between whitespace-nowrap">
+      <div class="flex items-center gap-1 sm:gap-2">
+        <span class="inline-flex items-center gap-1 font-bold text-sun shrink-0">
           <i data-lucide="clock" class="w-3.5 h-3.5"></i>
           <span>Oras ng Tanggapan:</span>
         </span>
@@ -93,26 +93,26 @@
 
   <!-- ================= MAIN HEADER / NAVBAR ================= -->
   <header class="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-3 sm:px-6 py-3">
-      
-      <!-- Mobile Sidebar Toggle & Branding -->
-      <div class="flex items-center gap-2.5">
-        <button id="mobile-sidebar-toggle" class="md:hidden p-2 rounded-xl border border-border text-foreground hover:bg-secondary transition-colors" aria-label="Buksan ang Menu">
-          <i data-lucide="menu" class="w-5 h-5"></i>
-        </button>
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-2.5 sm:px-6 py-2 sm:py-3">
 
-        <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-          <img src="assets/logo.png" alt="Barangay Ibayo-Tipas Official Seal" class="size-10 sm:size-11 rounded-full object-contain shadow-sm border border-border group-hover:scale-105 transition-transform bg-white p-0.5">
-          <span class="leading-tight">
-            <span class="block font-bold text-foreground font-heading text-base sm:text-lg group-hover:text-primary transition-colors tracking-tight">
-              Barangay Ibayo-Tipas
-            </span>
-            <span class="block text-[11px] sm:text-xs text-muted-foreground font-medium">
-              Taguig City · Tuloy ang Serbisyo!
-            </span>
+    <!-- Mobile Sidebar Toggle & Branding -->
+    <div class="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
+      <button id="mobile-sidebar-toggle" class="md:hidden p-1.5 rounded-lg border border-border text-foreground hover:bg-secondary transition-colors shrink-0" aria-label="Buksan ang Menu">
+        <i data-lucide="menu" class="w-4 h-4"></i>
+      </button>
+
+      <a href="index.html" class="flex items-center gap-1.5 sm:gap-3 group min-w-0">
+        <img src="assets/logo.png" alt="Barangay Ibayo-Tipas Official Seal" class="size-8 sm:size-11 rounded-full object-contain shadow-sm border border-border group-hover:scale-105 transition-transform bg-white p-0.5 shrink-0">
+        <span class="leading-tight truncate">
+          <span class="block font-bold text-foreground font-heading text-xs sm:text-lg group-hover:text-primary transition-colors tracking-tight truncate">
+            Barangay Ibayo-Tipas
           </span>
-        </a>
-      </div>
+          <span class="block text-[10px] sm:text-xs text-muted-foreground font-medium truncate">
+            Taguig City · Tuloy ang Serbisyo!
+          </span>
+        </span>
+      </a>
+    </div>
 
       <!-- Header Actions: Online Request Only -->
       <div class="flex items-center gap-2 sm:gap-3">
@@ -146,7 +146,7 @@
       <i data-lucide="megaphone" class="w-3.5 h-3.5 text-primary"></i>
       <span>Announcements</span>
     </a>
-    <a href="about.html" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
+    <a href="index.html#about" class="px-3 py-1.5 rounded-full bg-white text-foreground border border-border shadow-xs flex items-center gap-1">
       <i data-lucide="landmark" class="w-3.5 h-3.5 text-primary"></i>
       <span>About</span>
     </a>
@@ -377,10 +377,10 @@
           </div>
           <div class="text-xs sm:text-sm space-y-1">
             <h3 class="font-extrabold text-emerald-900 font-heading text-sm sm:text-base">
-              Opisyal na Anunsyo: 100% Libre ang Lahat ng Dokumento!
+              Opisyal na Anunsyo: ₱100 na Bayad sa Bawat Dokumento
             </h3>
             <p class="text-emerald-800 leading-relaxed font-medium">
-              Lahat ng kahilingan para sa Barangay Clearance, Certificate of Residency, Indigency, at First-Time Jobseeker ay <strong>WALANG BAYAD (100% LIBRE)</strong> — basta magpapakita ng <strong>orihinal na Valid ID na may tirahan sa Barangay Ibayo-Tipas, Taguig City</strong> sa pagkuha sa Barangay Hall.
+              Ang Barangay Clearance, Certificate of Residency, at Certificate of Indigency ay may bayad na <strong>₱100</strong> bawat isa, na babayaran sa Barangay Hall sa araw ng pagkuha. Ang <strong>First-Time Jobseeker</strong> ay nananatiling <strong>LIBRE</strong> alinsunod sa<strong> RA 11261.</strong> Dalhin ang <strong>orihinal na Valid ID</strong> na may tirahan sa <strong>Barangay Ibayo-Tipas, Taguig City.</strong>
             </p>
           </div>
         </div>
@@ -407,7 +407,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                   <h3 class="text-lg font-bold font-heading text-foreground">Barangay Clearance</h3>
-                  <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">100% LIBRE</span>
+                  <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">₱100</span>
                 </div>
                 <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
                   Para sa local employment, business permit, postal ID, police clearance, NBI, o legal requirements.
@@ -432,7 +432,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                   <h3 class="text-lg font-bold font-heading text-foreground">Certificate of Residency</h3>
-                  <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">100% LIBRE</span>
+                  <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">₱100</span>
                 </div>
                 <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
                   Patunay ng paninirahan para sa school admission, bank account opening, utility connection, at government transactions.
@@ -457,7 +457,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                   <h3 class="text-lg font-bold font-heading text-foreground">Certificate of Indigency</h3>
-                  <span class="text-xs font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">100% LIBRE</span>
+                  <span class="text-xs font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">₱100</span>
                 </div>
                 <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
                   Para sa Taguig TLC medical assistance, hospital billing discount, DSWD, scholarship, at Public Attorney's Office (PAO).

@@ -54,10 +54,10 @@
 <body class="min-h-full flex flex-col antialiased text-foreground bg-background">
 
   <!-- ================= TOP NOTICE BAR ================= -->
-  <div class="bg-leaf text-primary-foreground text-xs py-2 px-4 border-b border-leaf-light/50">
-    <div class="mx-auto flex max-w-7xl items-center justify-between">
-      <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-1.5 font-bold text-sun">
+  <div class="bg-leaf text-primary-foreground text-[10px] sm:text-xs py-1.5 px-2 sm:px-4 border-b border-leaf-light/50">
+    <div class="mx-auto flex max-w-7xl items-center justify-between whitespace-nowrap">
+      <div class="flex items-center gap-1 sm:gap-2">
+        <span class="inline-flex items-center gap-1 font-bold text-sun shrink-0">
           <i data-lucide="clock" class="w-3.5 h-3.5"></i>
           <span>Oras ng Tanggapan:</span>
         </span>
@@ -93,9 +93,6 @@
         </a>
       </div>
       <div class="flex items-center gap-2 sm:gap-3">
-        <button id="theme-toggle" type="button" aria-label="Lumipat sa dark mode" aria-pressed="false" title="Lumipat sa dark mode" class="rounded-full border border-border bg-card p-2.5 text-foreground transition-colors hover:bg-secondary">
-          <i data-lucide="moon" class="h-4 w-4"></i>
-        </button>
         <button class="open-request-modal rounded-full bg-sun hover:bg-sun-hover text-sun-foreground font-bold px-4 py-2 text-xs shadow-sm transition-transform hover:scale-105 flex items-center gap-1.5">
           <i data-lucide="file-plus" class="w-3.5 h-3.5 shrink-0"></i>
           <span>Online Request</span>
